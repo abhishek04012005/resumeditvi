@@ -3,18 +3,11 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import blogPosts from "../../../data/blog";
 import BlogDetail from "@/structure/blogdetail/BlogDetail";
+import { createSlug } from "@/lib/slug";
 
 interface BlogPageParams {
-  slug: Promise<string>;
+  slug: string;
 }
-
-
-const createSlug = (title: string): string => {
-  return title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
-};
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -27,7 +20,8 @@ export async function generateMetadata({
 }: {
   params: Promise<BlogPageParams>;
 }): Promise<Metadata> {
-  const post = blogPosts.find(async (post) => createSlug(post.title) === await (await params).slug);
+  const resolvedParams = await params;
+  const post = blogPosts.find((post) => createSlug(post.title) === resolvedParams.slug);
 
   if (!post) {
     return {
@@ -39,13 +33,17 @@ export async function generateMetadata({
   const imageUrl = typeof post.image === "string" ? post.image : post.image.src;
 
   return {
-    title: `${post.title} | Your Blog Name`,
+    title: `${post.title} | Ditvi Resume`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${resolvedParams.slug}`,
+    },
     openGraph: {
       type: "article",
-      siteName: "Your Blog Name",
+      siteName: "Ditvi Resume",
       title: post.title,
       description: post.excerpt,
+      url: `/blog/${resolvedParams.slug}`,
       images: [
         {
           url: imageUrl,
@@ -69,7 +67,8 @@ export default async function BlogPostPage({
 }: {
   params: Promise<BlogPageParams>;
 }) {
-  const post = blogPosts.find(async (post) => createSlug(post.title) === await (await params).slug);
+  const resolvedParams = await params;
+  const post = blogPosts.find((post) => createSlug(post.title) === resolvedParams.slug);
 
   if (!post) {
     notFound();

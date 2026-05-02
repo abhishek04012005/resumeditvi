@@ -9,7 +9,7 @@ const BlogHome: React.FC = () => {
       <div className="blog">
         <BlogStructure 
           title="Latest Blogs" 
-          subtitle="Stay updated with our latest articles and biodata creation tips" 
+          subtitle="Stay updated with our latest articles and resume creation tips" 
           blogPosts={blogPosts.map(post => ({
             ...post,
             image: typeof post.image === "string" ? post.image : (post.image.src ?? "")

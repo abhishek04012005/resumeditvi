@@ -16,8 +16,8 @@ import {
 } from "@mui/icons-material";
 import { UserDetailsStorage } from "@/supabase/UserDetails";
 import {
-  BiodataRequestStorage,
-  BiodataRequest,
+  ResumeRequestStorage,
+  ResumeRequest,
 } from "@/supabase/ResumeRequest";
 // import Loader from "@/structure/Loader/Loader";
 import formatDate from "../../../data/formatDate";
@@ -33,7 +33,7 @@ interface StatItem {
 }
 
 interface SortConfig {
-  key: keyof BiodataRequest;
+  key: keyof ResumeRequest;
   direction: "asc" | "desc";
 }
 
@@ -91,7 +91,7 @@ const LeadMagnetDashboard: React.FC = () => {
       setIsLoading(true);
       const users = await UserDetailsStorage.getAllUsers();
       const requests =
-        await BiodataRequestStorage.getAllBiodataRequestWithoutAnyFilters();
+        await ResumeRequestStorage.getAllResumeRequestWithoutAnyFilters();
 
         const potentialLeads = users.filter(
           (user) =>
@@ -119,7 +119,7 @@ const LeadMagnetDashboard: React.FC = () => {
   const handleWhatsAppClick = (mobileNumber?: string): void => {
     if (!mobileNumber) return;
     const message = encodeURIComponent(
-      "Hello! We noticed you're interested in our biodata services. How may we assist you today?"
+      "Hello! We noticed you're interested in our resume services. How may we assist you today?"
     );
     window.open(`https://wa.me/91${mobileNumber}?text=${message}`, "_blank");
   };

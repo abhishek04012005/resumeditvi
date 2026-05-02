@@ -2,6 +2,7 @@ import styles from './button.module.css';
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   children: React.ReactNode;
   className?: string;
@@ -9,18 +10,20 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
+  type = 'button',
   onClick,
   children,
   className = '',
 }) => {
   return (
     <button
+      type={type}
       className={`${styles.button} ${styles[variant]} ${className}`}
       onClick={onClick}
     >
       {children}
       {variant === 'primary' && <span className={styles.btnShine} />}
-      {variant === 'secondary'  && <span className={styles.btnShineSecondary} />}
+      {variant === 'secondary' && <span className={styles.btnShineSecondary} />}
     </button>
   );
 };

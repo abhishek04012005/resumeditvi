@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/components/GetNow/GetNow.tsx
+// src/structure/enquiryPopup/EnquiryPopup.tsx
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "./getnow.module.css";
-import { UserDetailsStorage } from "../../supabase/UserDetails";
+import styles from "./enquiryPopup.module.css";
 import Button from "../button/Button";
 
-interface GetNowProps {
+interface EnquiryPopupProps {
   isOpen: boolean;
   onClose: () => void;
   modelDetails: {
@@ -22,11 +21,11 @@ interface GetNowProps {
   isLeadMagnet?: boolean;
 }
 
-const GetNow: React.FC<GetNowProps> = ({
+const EnquiryPopup: React.FC<EnquiryPopupProps> = ({
   isOpen,
   onClose,
   modelDetails,
-  heading = "Request Biodata",
+  heading = "Request Resume",
   paragraph = "Please fill these details.",
   buttonTitle = "Save and Continue",
   isLeadMagnet = false,
@@ -39,94 +38,74 @@ const GetNow: React.FC<GetNowProps> = ({
     mobileNumber: "",
   });
 
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     try {
-  //       setIsLoading(true);
-  //       const userDetail = await UserDetailsStorage.saveUserDetails({
-  //         userDetails: {
-  //           name: formData.name,
-  //           mobileNumber: formData.mobileNumber,
-  //         },
-  //         modelDetails: modelDetails,
-  //       });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  //       setFormData({ name: "", mobileNumber: "" });
-  //       onClose();
+  try {
+    // Form validation
+    if (!formData.name || !formData.mobileNumber) {
+      setError(true);
+      alert("Please fill in all required fields");
+      return;
+    }
 
-  //       if (isLeadMagnet) {
-  //         router.push("/resume");
-  //       } else {
-  //         const searchParams = new URLSearchParams({
-  //           requestNumber: userDetail.request_number,
-  //           name: formData.name,
-  //           mobileNumber: formData.mobileNumber,
-  //           modelNumber: modelDetails.modelNumber,
-  //           language: modelDetails.language,
-  //           type: modelDetails.type,
-  //           amount: modelDetails.amount.toString(),
-  //         });
+    if (formData.mobileNumber.length !== 10) {
+      setError(true);
+      alert("Please enter a valid 10-digit mobile number");
+      return;
+    }
 
-  //         router.push(`/choose-option `);
-  //       }
-  //     } catch (error) {
-  //       setError(true);
-  //       console.error("Error submitting form:", error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+    setIsLoading(true);
+    setError(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      setIsLoading(true);
-      const userDetail = await UserDetailsStorage.saveUserDetails({
-        userDetails: {
-          name: formData.name,
-          mobileNumber: formData.mobileNumber,
-        },
-        modelDetails: modelDetails,
-      });
+    const savedName = formData.name;
+    const savedMobileNumber = formData.mobileNumber;
+    const savedService = modelDetails.type || "resume";
 
+    const response = await fetch("/api/enquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: savedName,
+        mobileNumber: savedMobileNumber,
+        service: savedService,
+      }),
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.error || "Failed to save enquiry");
+    }
+
+    if (isLeadMagnet) {
       setFormData({ name: "", mobileNumber: "" });
       onClose();
-
-      if (isLeadMagnet) {
-        router.push("/resume");
-      } else {
-        // Store request number in localStorage for recovery
-        localStorage.setItem("currentRequestNumber", userDetail.request_number);
-
-        // Build query params
-        const queryParams = new URLSearchParams({
-          requestNumber: userDetail.request_number,
-          name: formData.name,
-          mobileNumber: formData.mobileNumber,
-          modelNumber: modelDetails.modelNumber,
-          language: modelDetails.language,
-          type: modelDetails.type,
-          amount: modelDetails.amount.toString(),
-        }).toString();
-
-        // Navigate with query params
-        router.push(`/choose-option?${queryParams}`);
-      }
-    } catch (error) {
-      setError(true);
-      console.error("Error submitting form:", error);
-    } finally {
-      setIsLoading(false);
+      await router.push("/resume");
+      return;
     }
-  };
+
+    setFormData({ name: "", mobileNumber: "" });
+    onClose();
+  } catch (error) {
+    setError(true);
+    if (error instanceof Error) {
+      alert(error.message);
+    } else {
+      alert("Unable to submit form. Please try again later.");
+    }
+    console.error("Error submitting form:", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
-
-
 
   const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, "");
@@ -218,7 +197,11 @@ const GetNow: React.FC<GetNowProps> = ({
               aria-label="WhatsApp number"
             />
           </div>
-          <Button variant="primary" className={styles.getnowSubmitButton}>
+          <Button
+            type="submit"
+            variant="primary"
+            className={styles.getnowSubmitButton}
+          >
             {buttonTitle}
           </Button>
         </form>
@@ -227,4 +210,4 @@ const GetNow: React.FC<GetNowProps> = ({
   );
 };
 
-export default GetNow;
+export default EnquiryPopup;

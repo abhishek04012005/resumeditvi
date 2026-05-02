@@ -7,18 +7,17 @@ import Container from "../container/Container";
 import {
   ArrowForward,
   ArrowBack,
-  Star,
   Visibility,
   ShoppingCart,
   EditDocument,
 } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import styles from "./resume.module.css";
 import Heading from "../heading/Heading";
 import Button from "../button/Button";
 import Background from "../background/Background";
-import GetNow from "../getnow/GetNow";
+import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 
 interface ArrowProps {
   className?: string;
@@ -27,15 +26,10 @@ interface ArrowProps {
 
 interface ResumeType {
   id: string | number;
-  image: string;
-  title: string;
-  modelNumber: string;
-  modelName: string;
-  originalPrice: number;
-  discountedPrice: number;
-  discount: number;
-  language?: string;
-  type?: string;
+  slug: string;
+  name: string;
+  image: StaticImageData | string;
+  type: string;
 }
 
 interface BioDataCardStructureProps {
@@ -53,7 +47,6 @@ interface ResumeCardProps {
   subtitle: string;
   isSlider?: boolean;
   showButton?: boolean;
-  biodataDetails?: ResumeType[];
 }
 
 const NextArrow: React.FC<ArrowProps> = ({ className, onClick }) => (
@@ -89,41 +82,15 @@ const BioDataCardStructure: React.FC<BioDataCardStructureProps> = ({
       <div className={styles.resumeCardMedia}>
         <Image
           src={data.image}
-          alt={data.title}
+          alt={data.name}
           width={500}
           height={600}
           className={styles.resumeCardImage}
         />
-        <div className={styles.resumeCardPremium}>Premium</div>
-        <div className={styles.resumeCardDiscount}>
-          <span className={styles.resumeDiscountValue}>{data.discount}%</span>
-          <span className={styles.resumeDiscountLabel}>OFF</span>
-        </div>
-        <div className={styles.resumeCardOverlay}>
-          <div className={styles.resumeOverlayContent}>
-            <span className={styles.resumeModelLabel}>Model No.</span>
-            <h3 className={styles.resumeModelName}>{data.modelNumber}</h3>
-            <div className={styles.resumeRating}>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className={styles.resumeStar} />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className={styles.resumeCardContent}>
-        <h3 className={styles.resumeContentTitle}>{data.title}</h3>
-        <div className={styles.resumePriceSection}>
-          <div className={styles.resumePriceWrapper}>
-            <span className={styles.resumePriceOriginal}>
-              ₹{data.originalPrice}
-            </span>
-            <span className={styles.resumePriceFinal}>
-              ₹{data.discountedPrice}
-            </span>
-          </div>
-        </div>
+        <h3 className={styles.resumeContentTitle}>{data.name}</h3>
 
         <div className={styles.resumeButtons}>
           <Button
@@ -154,7 +121,6 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
   subtitle,
   isSlider = true,
   showButton,
-  biodataDetails = [],
 }) => {
   const router = useRouter();
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
@@ -197,10 +163,6 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
     ],
   };
 
-  const selectedBiodata = biodataDetails.find(
-    (biodata) => biodata.modelNumber === selectedModel
-  );
-
   const renderCards = () => {
     if (isSlider) {
       return (
@@ -214,14 +176,10 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
                   onHover={() => setHoveredCard(resume.id)}
                   onLeave={() => setHoveredCard(null)}
                   onGetNow={() => {
-                    setSelectedModel(resume.modelNumber);
+                    setSelectedModel(resume.slug);
                     setIsPopupOpen(true);
                   }}
-                  onPreview={() =>
-                    router.push(
-                      `/resume/${resume.modelName}`
-                    )
-                  }
+                  onPreview={() => router.push(`/resume/${resume.slug}`)}
                 />
               </div>
             ))}
@@ -240,14 +198,10 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
             onHover={() => setHoveredCard(resume.id)}
             onLeave={() => setHoveredCard(null)}
             onGetNow={() => {
-              setSelectedModel(resume.modelNumber);
+              setSelectedModel(resume.slug);
               setIsPopupOpen(true);
             }}
-            onPreview={() =>
-              router.push(
-                `/resume/${resume.modelName}`
-              )
-            }
+            onPreview={() => router.push(`/resume/${resume.slug}`)}
           />
         ))}
       </div>
@@ -285,9 +239,9 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
           </Container>
         </div>
       </Background>
-      <GetNow
+      <EnquiryPopup
         isOpen={isPopupOpen}
-        heading="Request Biodata"
+        heading="Request Resume"
         paragraph="Please fill these details."
         buttonTitle="Save and Continue"
         onClose={() => {
@@ -296,14 +250,9 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
         }}
         modelDetails={{
           modelNumber: selectedModel,
-          language: selectedBiodata?.language ?? "English",
-          type:
-            resumeDetails.find((resume) => resume.modelNumber === selectedModel)
-              ?.type ?? "",
-          amount:
-            resumeDetails.find(
-              (resume) => resume.modelNumber === selectedModel
-            )?.discountedPrice ?? 0,
+          language: "English",
+          type: "resume",
+          amount: 0,
         }}
       />
     </>

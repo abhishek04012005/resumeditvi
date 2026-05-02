@@ -1,23 +1,19 @@
-// app/biodata/page.tsx
-
 import React from "react";
 import ResumeCard from "../../structure/resume/resume";
 import resumeList from "../../data/resume";
 import Script from "next/script";
 
-// Export generateMetadata to set up dynamic static SEO meta tags
 export async function generateMetadata() {
   return {
-    title: "Professional Biodata Templates | Traditional Marriage Biodata Designs",
+    title: "Resume Templates | Professional Resume Designs",
     description:
-      "Browse our collection of professional and traditional marriage biodata templates. Choose from various designs to create your perfect matrimonial profile.",
-    keywords:
-      "biodata templates, marriage biodata formats, traditional biodata designs, matrimonial profile templates, professional biodata maker",
+      "Browse our collection of professional resume templates to create a polished career presentation.",
+    keywords: "resume templates, professional resume designs, career resume, modern resume templates",
     openGraph: {
-      title: "Professional Biodata Templates | Traditional Marriage Biodata Designs",
+      title: "Resume Templates | Professional Resume Designs",
       description:
-        "Browse our collection of professional and traditional marriage biodata templates. Choose from various designs to create your perfect matrimonial profile.",
-      images: ["https://your-domain.com/images/biodata-templates-preview.jpg"],
+        "Browse our collection of professional resume templates to create a polished career presentation.",
+      images: ["https://your-domain.com/images/resume-templates-preview.jpg"],
     },
   };
 }
@@ -25,11 +21,11 @@ export async function generateMetadata() {
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Professional Biodata Templates",
-  description: "Collection of traditional marriage biodata templates",
+  name: "Professional Resume Templates",
+  description: "Collection of professional resume templates",
   publisher: {
     "@type": "Organization",
-    name: "Biodata Maker",
+    name: "Resume Maker",
     logo: {
       "@type": "ImageObject",
       url: "https://your-domain.com/logo.png",
@@ -41,8 +37,7 @@ const schemaData = {
     itemListElement: resumeList.map((template, index) => ({
       "@type": "Product",
       position: index + 1,
-      name: template.title,
-      description: template.description,
+      name: template.name,
       offers: {
         "@type": "Offer",
         priceCurrency: "INR",
@@ -55,18 +50,14 @@ const schemaData = {
 const AllResume: React.FC = () => {
   return (
     <>
-      {/* Adding JSON‑LD Schema using Next.js Script component */}
       <Script type="application/ld+json" id="schema-jsonld">
         {JSON.stringify(schemaData)}
       </Script>
-      <div className="allbiodata">
+      <div className="allresume">
         <ResumeCard
-          title="Resume"
-          subtitle="Discover our handcrafted traditional biodata designs"
-          resumeDetails={resumeList.map(item => ({
-            ...item,
-            image: typeof item.image === "string" ? item.image : (item.image.src ?? ""),
-          }))}
+          title="Resume Templates"
+          subtitle="Discover our curated resume designs for professional profiles"
+          resumeDetails={resumeList}
           isSlider={false}
           showButton={true}
         />

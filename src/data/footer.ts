@@ -18,7 +18,7 @@ const footerQuickLinks: QuickLink[] = [
   { id: "hero", label: "Home", path: "/" },
   { id: "whyus", label: "Why Us", path: "/whyus" },
   { id: "how-we-work", label: "How We Work", path: "/how-we-work" },
-  { id: "biodata", label: "Resume", path: "/resume" },
+  { id: "resume", label: "Resume", path: "/resume" },
   { id: "blog", label: "Blog", path: "/blog" },
   { id: "article", label: "Article", path: "/articles" },
 ];

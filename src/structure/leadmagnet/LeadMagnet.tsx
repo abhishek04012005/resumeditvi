@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import GetNow from "../getnow/GetNow";
+import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 
-interface SampleBiodataDetails {
+interface SampleResumeDetails {
   modelNumber: string;
   language: string;
   type: string;
@@ -13,7 +13,7 @@ const LeadMagnet: React.FC = () => {
   const [showGetNow, setShowGetNow] = useState<boolean>(true);
   const [showLeadMagnet, setShowLeadMagnet] = useState<boolean>(true);
 
-  const sampleBiodataDetails: SampleBiodataDetails = {
+  const sampleResumeDetails: SampleResumeDetails = {
     modelNumber: "0000",
     language: "English",
     type: "Guest",
@@ -23,16 +23,16 @@ const LeadMagnet: React.FC = () => {
   return (
     <>
       {showLeadMagnet && (
-        <GetNow
-          heading="Get 8 Free Resume Sample and Resume Tips"
-          paragraph="Fill the details to get on your Whatsapp"
+        <EnquiryPopup
+          heading="Enquiry Now for Resume Templates"
+          paragraph="Please fill the details"
           buttonTitle="Submit"
           isOpen={showGetNow}
           onClose={() => {
             setShowGetNow(false);
             setShowLeadMagnet(false);
           }}
-          modelDetails={sampleBiodataDetails}
+          modelDetails={sampleResumeDetails}
           isLeadMagnet={true}
         />
       )}

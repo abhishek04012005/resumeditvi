@@ -69,3 +69,160 @@ a {
     color-scheme: dark;
   }
 }
+
+.skeleton-page {
+  min-height: 100vh;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--background);
+}
+
+.skeleton-hero {
+  display: grid;
+  width: 100%;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  align-items: center;
+}
+
+.skeleton-row,
+.skeleton-block,
+.skeleton-card,
+.skeleton-row-card,
+.skeleton-section-heading,
+.skeleton-hero-image {
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+}
+
+.skeleton-block::after,
+.skeleton-section-heading::after,
+.skeleton-card::after,
+.skeleton-row-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 36px;
+}
+
+.skeleton-subtitle {
+  width: 45%;
+  height: 22px;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 16px;
+}
+
+.skeleton-button {
+  width: 180px;
+  height: 44px;
+}
+
+.skeleton-hero-image {
+  min-height: 280px;
+  border-radius: 24px;
+}
+
+.skeleton-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skeleton-section-heading {
+  width: 280px;
+  height: 24px;
+}
+
+.skeleton-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.skeleton-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 160px;
+}
+
+.skeleton-card-title {
+  width: 60%;
+  height: 22px;
+}
+
+.skeleton-card-text {
+  width: 100%;
+  height: 14px;
+}
+
+.skeleton-card-text.short {
+  width: 65%;
+}
+
+.skeleton-rows {
+  display: grid;
+  gap: 16px;
+}
+
+.skeleton-row-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 120px;
+}
+
+.skeleton-row-title {
+  width: 45%;
+  height: 18px;
+}
+
+.skeleton-row-text {
+  width: 90%;
+  height: 14px;
+}
+
+@media (max-width: 900px) {
+  .skeleton-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .skeleton-page {
+    padding: 24px 16px;
+  }
+}

@@ -104,7 +104,7 @@ const Testimonial: React.FC = () => {
       <Container>
         <Heading
           title="Client Testimonials"
-          subtitle="What our clients say about our biodata design service"
+          subtitle="What our clients say about our resume design service"
         />
 
         <div className={styles.testimonialsSlider}>

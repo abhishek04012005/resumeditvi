@@ -41,7 +41,7 @@ const FLOW_TYPE_BY_ID: FlowTypeLookup = {
     }
   },
   [FlowType.FLOW_UPLOAD_BIODATA]: {
-    label: 'Upload Biodata',
+    label: 'Upload Resume',
     style: {
       color: '#ff6b00',
       backgroundColor: '#fff3e6',
@@ -52,7 +52,7 @@ const FLOW_TYPE_BY_ID: FlowTypeLookup = {
     }
   },
   [FlowType.FLOW_CREATE_BIODATA]: {
-    label: 'Create Biodata',
+    label: 'Create Resume',
     style: {
       color: '#8b5cf6',
       backgroundColor: '#f3e8ff',

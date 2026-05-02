@@ -4,34 +4,33 @@ import { UserDetails, ModelDetails } from '../../structure/chooseoption/ChooseOp
 
 interface PageProps {
   searchParams: Promise<{
-    requestNumber?: string;
-    userDetails?: string;
-    modelDetails?: string;
+    name?: string;
+    mobileNumber?: string;
+    service?: string;
+    modelNumber?: string;
+    language?: string;
+    amount?: string;
+    type?: string;
   }>;
 }
 
 export default async function ChooseOptionPage({ searchParams }: PageProps) {
   const resolvedParams = await searchParams;
 
-  let userDetails: UserDetails = { name: '' };
-  let modelDetails: ModelDetails = { type: 'standard' };
+  const userDetails: UserDetails = {
+    name: resolvedParams.name || '',
+    mobileNumber: resolvedParams.mobileNumber || '',
+  };
 
-  try {
-    if (resolvedParams.userDetails) {
-      userDetails = JSON.parse(resolvedParams.userDetails) as UserDetails;
-    }
-    if (resolvedParams.modelDetails) {
-      modelDetails = JSON.parse(resolvedParams.modelDetails) as ModelDetails;
-    }
-  } catch (error) {
-    console.error('Error parsing URL parameters:', error);
-  }
-
-  const requestNumber = resolvedParams.requestNumber || '';
+  const modelDetails: ModelDetails = {
+    modelNumber: resolvedParams.modelNumber || '',
+    language: resolvedParams.language || 'English',
+    type: resolvedParams.service || resolvedParams.type || 'resume',
+    amount: Number(resolvedParams.amount || 0),
+  };
 
   return (
     <ChooseOption
-      requestNumber={requestNumber}
       userDetails={userDetails}
       modelDetails={modelDetails}
     />

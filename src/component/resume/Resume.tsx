@@ -3,16 +3,12 @@ import ResumeCard from "../../structure/resume/resume";
 import resumeList from "../../data/resume";
 
 const Resume: React.FC = (): JSX.Element => {
-
   return (
-    <div className="biodata">
+    <div className="resume">
       <ResumeCard
-        title="Resume"
-        subtitle="Explore Premium Traditional Marriage Biodata Templates"
-        resumeDetails={resumeList.map(item => ({
-          ...item,
-          image: typeof item.image === "string" ? item.image : item.image.src
-        }))}
+        title="Traditional Resume Templates"
+        subtitle="Professionally structured resume templates for modern career presentation"
+        resumeDetails={resumeList}
         isSlider={true}
       />
     </div>

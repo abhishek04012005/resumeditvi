@@ -13,7 +13,7 @@ import {
 import styles from "./uploadresume.module.css";
 import Container from "../../structure/container/Container";
 import { UploadFile } from "../../supabase/UploadFile";
-import { BiodataRequestStorage } from "../../supabase/ResumeRequest";
+import { ResumeRequestStorage } from "../../supabase/ResumeRequest";
 import { StorageBucket } from "../../data/StorageBucket";
 import Background from "../background/Background";
 import Heading from "../heading/Heading";
@@ -24,58 +24,25 @@ interface Step {
   isComplete: boolean;
 }
 
-interface UploadBiodataProps {
-  initialRequestNumber?: string;
-  initialUserDetails?: Record<string, unknown>;
-  initialModelDetails?: Record<string, unknown>;
-}
-
-const UploadBiodata: React.FC<UploadBiodataProps> = ({
-  initialRequestNumber,
-  initialUserDetails,
-  initialModelDetails,
-}) => {
+const UploadResume: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [requestNumber, setRequestNumber] = useState<string | null>(null);
+  const [requestNumber, setRequestNumber] = useState<string>(`REQ-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`);
   const [userDetails, setUserDetails] = useState<Record<string, unknown>>({});
   const [modelDetails, setModelDetails] = useState<Record<string, unknown>>({});
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [biodataFile, setBiodataFile] = useState<File | null>(null);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [biodataPreview, setBiodataPreview] = useState<string | null>(null);
+  const [resumePreview, setResumePreview] = useState<string | null>(null);
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const biodataInputRef = useRef<HTMLInputElement>(null);
+  const resumeInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // 1) pull from URL
-    const paramReq = searchParams.get("requestNumber");
-    console.log("URL requestNumber:", paramReq);
-
-    // 2) pull from localStorage
-    const storedReq = localStorage.getItem("currentRequestNumber");
-    console.log("localStorage requestNumber:", storedReq);
-
-    // 3) if neither, error + redirect
-    if (!paramReq && !storedReq) {
-      console.error("No request number found");
-      setError("Invalid request. Please try again.");
-      router.push("/");
-      return;
-    }
-
-    // 4) choose one, stash it, and set state
-    const finalReq = paramReq || storedReq;
-    console.log("Using requestNumber:", finalReq);
-    setRequestNumber(finalReq);
-    localStorage.setItem("currentRequestNumber", finalReq ?? "");
-
-    // 5) optional JSON-encoded params
     const udParam = searchParams.get("userDetails");
     if (udParam) {
       try {
@@ -93,7 +60,7 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
         console.warn("Could not parse modelDetails");
       }
     }
-  }, [searchParams, router]);
+  }, [searchParams]);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -120,7 +87,7 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
     reader.readAsDataURL(file);
   };
 
-  const handleBiodataUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleResumeUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     setError("");
 
@@ -145,15 +112,15 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
       return;
     }
 
-    setBiodataFile(file);
+    setResumeFile(file);
     if (file.type.startsWith("image/")) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setBiodataPreview(reader.result as string);
+        setResumePreview(reader.result as string);
       };
       reader.readAsDataURL(file);
     } else {
-      setBiodataPreview(null);
+      setResumePreview(null);
     }
   };
 
@@ -163,58 +130,55 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
       isComplete: !!imageFile,
     },
     {
-      title: "Upload Existing Biodata",
-      isComplete: !!biodataFile,
+      title: "Upload Existing Resume",
+      isComplete: !!resumeFile,
     },
     {
       title: "Review & Submit",
-      isComplete: currentStep === 3 && !!imageFile && !!biodataFile,
+      isComplete: currentStep === 3 && !!imageFile && !!resumeFile,
     },
   ];
 
   const handleSubmit = async () => {
     try {
-      if (!imageFile || !biodataFile || !requestNumber) {
-        throw new Error(
-          "Please upload both files and ensure request number exists"
-        );
+      if (!imageFile || !resumeFile) {
+        throw new Error("Please upload both files before submitting");
       }
 
       setIsLoading(true);
       setError("");
 
+      const fileBase = `upload-${Date.now()}`;
       const profileUrl = await UploadFile({
         file: imageFile,
-        requestNumber: `${requestNumber}_profile`,
+        requestNumber: `${fileBase}_profile`,
         folderName: StorageBucket.UPLOAD_BIODATA,
       });
 
-      const biodataUrl = await UploadFile({
-        file: biodataFile,
-        requestNumber: `${requestNumber}_biodata`,
+      const resumeUrl = await UploadFile({
+        file: resumeFile,
+        requestNumber: `${fileBase}_resume`,
         folderName: StorageBucket.UPLOAD_BIODATA,
       });
 
       const params = new URLSearchParams({
-        requestNumber,
-        mobileNumber: "1234567890", // Replace with actual mobile number
-        modelNumber: "BIO-001", // Replace with actual model number
-        type: "Standard", // Replace with actual type
-        name: "User Name", // Replace with actual name
+        mobileNumber: String(userDetails.mobileNumber || ""),
+        modelNumber: String(modelDetails.modelNumber || ""),
+        type: String(modelDetails.type || ""),
+        name: String(userDetails.name || ""),
         profileUrl,
-        biodataUrl,
+        resumeUrl,
         uploadDate: new Date().toISOString(),
       });
 
-      await BiodataRequestStorage.saveBiodataRequestFromUploadBiodata({
+      await ResumeRequestStorage.saveResumeRequestFromUploadResume({
         requestNumber,
         userDetails,
         modelDetails,
         profileUrl,
-        biodataUrl,
+        resumeUrl,
       });
 
-      localStorage.removeItem("currentRequestNumber");
       router.push(`/confirmation?${params.toString()}`);
     } catch (error) {
       console.error("Upload error:", error);
@@ -228,8 +192,8 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
     <Background>
       <Container>
         <Heading
-          title="Upload Biodata"
-          subtitle="Upload Your Profile Photo and Existing Biodata."
+          title="Upload Resume"
+          subtitle="Upload Your Profile Photo and Existing Resume."
         />
         <div className={styles.uploadFilesContent}>
           <div className={styles.stepsProgress}>
@@ -309,25 +273,25 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
             <div className={styles.uploadBox}>
               <input
                 type="file"
-                ref={biodataInputRef}
-                onChange={handleBiodataUpload}
+                ref={resumeInputRef}
+                onChange={handleResumeUpload}
                 accept=".pdf,.doc,.docx,image/*"
                 style={{ display: "none" }}
               />
               <div
                 className={`${styles.uploadArea} ${
-                  biodataFile ? styles.hasFile : ""
+                  resumeFile ? styles.hasFile : ""
                 }`}
-                onClick={() => biodataInputRef.current?.click()}
+                onClick={() => resumeInputRef.current?.click()}
               >
-                {biodataFile ? (
+                {resumeFile ? (
                   <div className={styles.fileSuccess}>
-                    {biodataPreview ? (
+                    {resumePreview ? (
                       <div className={styles.previewSection}>
                         <div className={styles.previewContainer}>
                           <Image
-                            src={biodataPreview}
-                            alt="Biodata"
+                            src={resumePreview}
+                            alt="Resume"
                             className={styles.imagePreview}
                           />
                         </div>
@@ -335,7 +299,7 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
                           className={styles.changeImageBtn}
                           onClick={(e) => {
                             e.stopPropagation();
-                            biodataInputRef.current?.click();
+                            resumeInputRef.current?.click();
                           }}
                         >
                           <Check className={styles.successIcon} />
@@ -345,12 +309,12 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
                     ) : (
                       <div className={styles.fileInfo}>
                         <Description className={styles.fileIcon} />
-                        <span>{biodataFile.name}</span>
+                        <span>{resumeFile.name}</span>
                         <button
                           className={styles.changeFileBtn}
                           onClick={(e) => {
                             e.stopPropagation();
-                            biodataInputRef.current?.click();
+                            resumeInputRef.current?.click();
                           }}
                         >
                           <Check className={styles.successIcon} />
@@ -361,9 +325,9 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
                   </div>
                 ) : (
                   <>
-                    <h3>Upload Existing Biodata</h3>
-                    <button className={styles.uploadBtn}>Upload Biodata</button>
-                    <p>Click to upload your existing biodata</p>
+                    <h3>Upload Existing Resume</h3>
+                    <button className={styles.uploadBtn}>Upload Resume</button>
+                    <p>Click to upload your existing resume</p>
                     <span className={styles.fileHint}>
                       PDF, DOC, or Image files (Max 5MB)
                     </span>
@@ -389,18 +353,18 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
                 )}
               </div>
               <div className={styles.reviewItem}>
-                <h4>Biodata</h4>
-                {biodataPreview ? (
+                <h4>Resume</h4>
+                {resumePreview ? (
                   <Image
-                    src={biodataPreview}
-                    alt="Biodata"
+                    src={resumePreview}
+                    alt="Resume"
                     className={styles.reviewImage}
                   />
                 ) : (
-                  biodataFile && (
+                  resumeFile && (
                     <div className={styles.fileInfo}>
                       <Description className={styles.fileIcon} />
-                      <span>{biodataFile.name}</span>
+                      <span>{resumeFile.name}</span>
                     </div>
                   )
                 )}
@@ -422,7 +386,7 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
               <button
                 className={`${styles.navButton} ${styles.next}`}
                 onClick={() => setCurrentStep((prev) => prev + 1)}
-                disabled={currentStep === 1 ? !imageFile : !biodataFile}
+                disabled={currentStep === 1 ? !imageFile : !resumeFile}
               >
                 Next <ArrowForward />
               </button>
@@ -430,7 +394,7 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
               <button
                 className={`${styles.navButton} ${styles.submit}`}
                 onClick={handleSubmit}
-                disabled={!imageFile || !biodataFile}
+                disabled={!imageFile || !resumeFile}
               >
                 Submit
               </button>
@@ -448,4 +412,4 @@ const UploadBiodata: React.FC<UploadBiodataProps> = ({
   );
 };
 
-export default UploadBiodata;
+export default UploadResume;

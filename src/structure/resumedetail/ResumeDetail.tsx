@@ -1,205 +1,166 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./resumedetail.module.css";
 import Background from "../background/Background";
-import {
-  LocalOffer,
-  Star,
-  Description,
-  ShoppingCart,
-} from "@mui/icons-material";
+import { Description, ShoppingCart, CheckCircle } from "@mui/icons-material";
 import Container from "../container/Container";
-import ModelTypes from "@/data/ModelTypes";
-import GetNow from "../getnow/GetNow";
+import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 import resumeDetails from "@/data/resume";
 import Button from "../button/Button";
 import Image from "next/image";
-
-interface ResumeType {
-  id: string | number;
-  modelNumber: string;
-  modelName: string;
-  title: string;
-  description: string;
-  image: string;
-  studentImage?: string;
-  hindiImage?: string;
-  hindiStudentImage?: string;
-  originalPrice: number;
-  discountedPrice: number;
-  discount: number;
-  language?: string;
-  type?: string;
-}
+import { ResumeType } from "@/types/types";
 
 const ResumeDetail: React.FC = () => {
   const router = useRouter();
-  const { modelName } = useParams<{ modelName: string }>();
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
-  const [selectedModel, setSelectedModel] = useState<string>(
-    resumeDetails?.find((resume) => resume.modelName === modelName)
-      ?.modelNumber || ""
-  );
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [selectedType, setSelectedType] = useState<string>(
-    ModelTypes.Professional.Name
-  );
-
+  const params = useParams<{ category?: string; resumeId?: string; slug?: string }>();
+  const resumeId = params.resumeId;
+  const category = params.category ?? params.slug;
+  const actualCategory = resumeId
+    ? resumeId.replace(/^resume(\d+)$/, "resume-$1")
+    : category;
   const resume = resumeDetails.find(
-    (item) => item.modelName === modelName
-  ) as unknown as ResumeType;
+    (item) => item.slug === actualCategory
+  ) as ResumeType | undefined;
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+  const [selectedModel, setSelectedModel] = useState<string>("");
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!resume) {
+      router.push("/resume");
+      return;
+    }
+    setSelectedModel(resume.slug);
+  }, [resume, router]);
 
   if (!resume) {
-    router.push("/resume");
     return null;
   }
 
-  const getCurrentImage = (): string => {
-    return (
-      resume?.[
-        selectedType === ModelTypes.Professional.Name ? "image" : "studentImage"
-      ] ||
-      resume?.image ||
-      ""
-    );
-  };
-
-  const handleTypeChange = (type: string): void => {
-    setSelectedType(type);
-    setImageLoaded(false);
-  };
+  const savings = resume.originalPrice - resume.discountPrice;
 
   return (
     <Background>
       <Container>
         <div className={styles.inner}>
           <div className={styles.header}>
-            <h1 className={styles.title}>{resume.title}</h1>
-            <Button variant="secondary" onClick={() => router.push("/resume")}>
-              Back
+            <div>
+              <p className={styles.subTitle}>Resume details</p>
+              <h1 className={styles.title}>{resume.name}</h1>
+            </div>
+            <Button variant="secondary" onClick={() => router.push("/resume")}> 
+              Back to templates
             </Button>
           </div>
 
           <div className={styles.content}>
             <div className={styles.imageWrapper}>
-              <div
-                className={`${styles.image} ${
-                  imageLoaded ? styles.loaded : ""
-                }`}
-              >
+              <div className={`${styles.image} ${imageLoaded ? styles.loaded : ""}`}>
                 <Image
-                  src={getCurrentImage()}
-                  alt={resume.modelName}
-                  width={500}
-                  height={600}
-                  onLoad={() => setImageLoaded(true)}
+                  src={resume.image}
+                  alt={resume.name}
+                  width={520}
+                  height={680}
                   priority
+                  onLoadingComplete={() => setImageLoaded(true)}
                 />
-                <div className={styles.tags}>
-                  <span className={styles.premium}>Premium</span>
-                  <span className={styles.discount}>
-                    <LocalOffer />
-                    {resume.discount}% OFF
-                  </span>
-                </div>
-              </div>
-              <div className={styles.rating}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={styles.star} />
-                ))}
-                <span className={styles.reviews}>(50+ Reviews)</span>
               </div>
             </div>
 
-            <div className={styles.info}>
-              <div className={styles.model}>
-                <h2>Model No: {resume.modelNumber}</h2>
-                <div className={styles.divider}></div>
+            <div className={styles.infoCard}>
+              <div className={styles.topRow}>
+                <span className={styles.badge}>Resume Template</span>
+                <span className={styles.badgeSecondary}>Professional</span>
               </div>
 
-              <div className={styles.price}>
-                <div className={styles.priceOriginal}>
-                  <span className={styles.priceLabel}>Original Price:</span>
-                  <span className={styles.priceValue}>
-                    ₹{resume.originalPrice}
-                  </span>
+              <div className={styles.headingRow}>
+                <h2>{resume.name}</h2>
+                <p>Clean structure, easy-to-edit sections, and recruiter-friendly layout.</p>
+              </div>
+
+              <div className={styles.statsRow}>
+                <div className={styles.statItem}>
+                  <p className={styles.statLabel}>Starting price</p>
+                  <strong>₹{resume.discountPrice}</strong>
                 </div>
-                <div className={styles.priceFinal}>
-                  <span className={styles.priceLabel}>Final Price:</span>
-                  <span className={styles.priceValue}>
-                    ₹{resume.discountedPrice}
-                  </span>
+                <div className={styles.statItem}>
+                  <p className={styles.statLabel}>You save</p>
+                  <strong>₹{savings}</strong>
                 </div>
               </div>
 
-              <div className={styles.options}>
-                <div className={styles.optionsGroup}>
-                  <h4 className={styles.optionsTitle}>Type:</h4>
-                  <div className={styles.radioGroup}>
-                    {Object.values(ModelTypes).map((type) => {
-                      const typedType = type as { Name: string };
-                      return (
-                        <label
-                          key={typedType.Name}
-                          className={`${styles.variantOption} ${
-                            selectedType === typedType.Name ? styles.active : ""
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name="type"
-                            value={typedType.Name}
-                            checked={selectedType === typedType.Name}
-                            onChange={() => handleTypeChange(typedType.Name)}
-                          />
-                          <span className={styles.variantLabel}>
-                            {typedType.Name}
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
+              <div className={styles.priceCard}>
+                <div>
+                  <span className={styles.originalPrice}>₹{resume.originalPrice}</span>
+                  <span className={styles.discountLabel}>Most popular</span>
                 </div>
+                <div className={styles.priceTag}>₹{resume.discountPrice}</div>
               </div>
-              <Button
-                variant="primary"
-                className={styles.getNowButton}
-                onClick={() => {
-                  setSelectedModel(resume.modelNumber);
-                  setIsPopupOpen(true);
-                }}
-              >
-                <ShoppingCart />
-                Get Now
-              </Button>
+
+              <div className={styles.featuresBlock}>
+                <h3>What you get</h3>
+                <ul>
+                  <li>
+                    <CheckCircle className={styles.checkIcon} />
+                    ATS-friendly resume design
+                  </li>
+                  <li>
+                    <CheckCircle className={styles.checkIcon} />
+                    Editable sections for your career story
+                  </li>
+                  <li>
+                    <CheckCircle className={styles.checkIcon} />
+                    Fast delivery & ready to download
+                  </li>
+                </ul>
+              </div>
+
+              <div className={styles.actions}>
+                <Button
+                  variant="primary"
+                  className={styles.actionButton}
+                  onClick={() => setIsPopupOpen(true)}
+                >
+                  <ShoppingCart />
+                  Enquiry Now
+                </Button>
+                <Button
+                  variant="secondary"
+                  className={styles.secondaryButton}
+                  onClick={() => router.push("/resume")}
+                >
+                  View all templates
+                </Button>
+              </div>
+
               <div className={styles.description}>
                 <div className={styles.descriptionHeader}>
                   <Description />
-                  <h3>Description</h3>
+                  <h3>About this template</h3>
                 </div>
-                <p className={styles.descriptionText}>{resume.description}</p>
+                <p className={styles.descriptionText}>
+                  This resume template is optimized for professional presentation and clean readability. It is ideal for job seekers who want a strong first impression with a modern, structured layout.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </Container>
-      <GetNow
+      <EnquiryPopup
         isOpen={isPopupOpen}
         heading="Request Resume"
         paragraph="Please fill these details."
         buttonTitle="Save and Continue"
         onClose={() => {
           setIsPopupOpen(false);
-          setSelectedModel("");
         }}
         modelDetails={{
           modelNumber: selectedModel,
-          language: resume.language ?? "English",
-          type: selectedType,
-          amount:
-            resumeDetails.find((resume) => resume.modelNumber === selectedModel)
-              ?.discountedPrice ?? 0,
+          language: "English",
+          type: resume.type ?? "resume",
+          amount: resume.discountPrice,
         }}
       />
     </Background>

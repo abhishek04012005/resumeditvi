@@ -7,7 +7,6 @@ import {
   CheckCircle,
   WhatsApp,
   Person,
-  RequestPage,
   Category,
   Phone,
 } from "@mui/icons-material";
@@ -25,17 +24,16 @@ export default function ConfirmationPage() {
   useEffect(() => {
     try {
       const confirmationDetails: ConfirmationDetails = {
-        requestNumber: searchParams.get("requestNumber") || "",
         mobileNumber: searchParams.get("mobileNumber") || "",
         modelNumber: searchParams.get("modelNumber") || "",
-        type: searchParams.get("type") || "",
+        type: searchParams.get("service") || searchParams.get("type") || "",
         name: searchParams.get("name") || "",
         profileUrl: searchParams.get("profileUrl") || "",
-        biodataUrl: searchParams.get("biodataUrl") || "",
+        resumeUrl: searchParams.get("resumeUrl") || "",
         uploadDate: searchParams.get("uploadDate") || new Date().toISOString(),
       };
 
-      if (!confirmationDetails.requestNumber) {
+      if (!confirmationDetails.mobileNumber) {
         throw new Error("Invalid request details");
       }
 
@@ -49,9 +47,9 @@ export default function ConfirmationPage() {
   }, [searchParams, router]);
 
   const handleWhatsApp = () => {
-    if (!details?.requestNumber || !details?.mobileNumber) return;
+    if (!details?.mobileNumber) return;
     
-    const message = `Hello! My biodata request number is ${details.requestNumber}. I'd like to check the status of my request.`;
+    const message = `Hello! My name is ${details.name || 'there'}. I'd like to check the status of my resume request.`;
     window.open(
       `https://wa.me/${details.mobileNumber}?text=${encodeURIComponent(message)}`,
       "_blank",
@@ -99,14 +97,6 @@ export default function ConfirmationPage() {
 
           <div className={styles.content}>
             <div className={styles.requestInfo}>
-              <div className={styles.infoItem}>
-                <RequestPage className={styles.icon} />
-                <div>
-                  <label>Request Number</label>
-                  <p>{details.requestNumber}</p>
-                </div>
-              </div>
-
               {details.name && (
                 <div className={styles.infoItem}>
                   <Person className={styles.icon} />
@@ -136,7 +126,7 @@ export default function ConfirmationPage() {
 
             <div className={styles.successMessage}>
               <CheckCircle className={styles.icon} />
-              <p>Your biodata request has been successfully received</p>
+              <p>Your resume request has been successfully received</p>
             </div>
 
             <button

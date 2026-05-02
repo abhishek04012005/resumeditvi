@@ -1,7 +1,7 @@
 // src/data/StorageBucket.ts
 
 export const StorageBucket = {
-  UPLOAD_BIODATA: 'upload-biodata', // This should match your Supabase bucket name
+  UPLOAD_BIODATA: 'upload-resume', // This should match your Supabase bucket name
   PROFILE_PHOTOS: 'profile-photos',
   DOCUMENTS: 'documents'
 } as const;

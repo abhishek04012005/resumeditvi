@@ -7,6 +7,7 @@ import Container from "../container/Container";
 import Image from "next/image";
 import Background from "../background/Background";
 import { useRouter } from "next/navigation";
+import { createSlug } from "@/lib/slug";
 import styles from "./blogcard.module.css";
 
 // BlogCardProps interface defines the expected shape of the post prop
@@ -24,13 +25,6 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   const router = useRouter();
-
-  const createSlug = (title: string): string => {
-    return title
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-");
-  };
 
   return (
     <div className={styles.blogCard}>

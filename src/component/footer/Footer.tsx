@@ -37,11 +37,11 @@ const Footer: React.FC = () => {
           <div className={styles.footerMain}>
             <div className={styles.footerBrand}>
               <Link href="/" className={styles.footerLogo}>
-                <Image src={Logo} alt="Ditvi Biodata Logo" priority />
+                <Image src={Logo} alt="Ditvi Resume Logo" priority />
               </Link>
               <p className={styles.footerDescription}>
                 Creating lasting impressions with our expertly crafted
-                traditional biodata designs.
+                traditional resume designs.
               </p>
               <div className={styles.footerSocialLinkWrapper}>
                 {socialLinks.map((link) => {
@@ -110,8 +110,8 @@ const Footer: React.FC = () => {
         <div className={styles.footerBottom}>
           <div className={styles.footerCopyright}>
             <p>
-              Ditvi Biodata is a unit of <strong>Ditvi Foundation</strong> | ©{" "}
-              {new Date().getFullYear()} Ditvi Biodata. All rights reserved.
+              Ditvi Resume is a unit of <strong>Ditvi Foundation</strong> | ©{" "}
+              {new Date().getFullYear()} Ditvi Resume. All rights reserved.
             </p>
           </div>
           <div className={styles.footerLegal}>

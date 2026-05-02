@@ -7,7 +7,7 @@ import { WhatsApp, Upload } from "@mui/icons-material";
 import Image from "next/image";
 import Container from "../container/Container";
 import styles from "./chooseoption.module.css";
-import chooseOptionImage from "../../assets/carousel/biodata-1114.png";
+import chooseOptionImage from "../../assets/carousel/resume-1114.png";
 import Background from "../background/Background";
 import Heading from "../heading/Heading";
 
@@ -48,13 +48,11 @@ const OptionCard: React.FC<OptionCardProps> = ({
 );
 
 interface ChooseOptionProps {
-  requestNumber: string;
   userDetails: UserDetails;
   modelDetails: ModelDetails;
 }
 
 const ChooseOption: React.FC<ChooseOptionProps> = ({
-  requestNumber,
   userDetails,
   modelDetails,
 }) => {
@@ -65,19 +63,18 @@ const ChooseOption: React.FC<ChooseOptionProps> = ({
   const handleWhatsAppClick = async () => {
     try {
       setIsLoading(true);
-      router.push(`/confirmation?requestNumber=${requestNumber}`);
-
-      const messageInfo = {
-        name: userDetails?.name || "",
-        requestNumber,
-        modelNumber:
-          modelDetails?.modelNumber
-      };
+      const queryParams = new URLSearchParams({
+        name: String(userDetails?.name || ""),
+        mobileNumber: String(userDetails?.mobileNumber || ""),
+        modelNumber: String(modelDetails?.modelNumber || ""),
+        type: String(modelDetails?.type || "resume"),
+      });
+      router.push(`/confirmation?${queryParams.toString()}`);
 
       const whatsappMessage = `Hello, I would like to create a Resume
-Name: ${messageInfo.name}
-Request Number: ${messageInfo.requestNumber}
-Model Number: ${messageInfo.modelNumber}`;
+Name: ${userDetails?.name || ""}
+Mobile Number: ${userDetails?.mobileNumber || ""}
+Model Number: ${modelDetails?.modelNumber || ""}`;
 
       const whatsappUrl = `https://wa.me/919263767441?text=${encodeURIComponent(
         whatsappMessage
@@ -90,15 +87,11 @@ Model Number: ${messageInfo.modelNumber}`;
     }
   };
 
-  const handleUploadBiodata = () => {
+  const handleUploadResume = () => {
     const searchParams = new URLSearchParams(window.location.search);
 
     // Prioritize props over URL parameters
     const params = new URLSearchParams();
-    params.set(
-      "requestNumber",
-      requestNumber || searchParams.get("requestNumber") || ""
-    );
 
     if (userDetails || searchParams.get("userDetails")) {
       params.set(
@@ -122,11 +115,6 @@ Model Number: ${messageInfo.modelNumber}`;
               : {})
         )
       );
-    }
-
-    if (!params.get("requestNumber")) {
-      console.error("No request number available");
-      return;
     }
 
     router.push(`/upload-resume?${params.toString()}`);

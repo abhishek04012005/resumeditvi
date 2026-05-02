@@ -15,8 +15,8 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import {
-  BiodataRequest,
-  BiodataRequestStorage,
+  ResumeRequest,
+  ResumeRequestStorage,
 } from "../../../supabase/ResumeRequest";
 import formatDate from "../../../data/formatDate";
 import {
@@ -37,7 +37,7 @@ import { ModelDetails } from "@/structure/chooseoption/ChooseOption";
 
 
 interface UserDetails {
-  biodataFilename: string;
+  resumeFilename: string;
   name?: string;
   mobileNumber?: string;
 }
@@ -51,7 +51,7 @@ interface StatItem {
 
 const ResumeDashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [requests, setRequests] = useState<BiodataRequest[]>([]);
+  const [requests, setRequests] = useState<ResumeRequest[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,7 +62,7 @@ const ResumeDashboard: React.FC = () => {
   const fetchRequests = async (): Promise<void> => {
     try {
       setError(null);
-      const response = await BiodataRequestStorage.getAllBiodataRequest();
+      const response = await ResumeRequestStorage.getAllResumeRequest();
       if (response) {
         setRequests(response);
       } else {
@@ -146,17 +146,17 @@ const ResumeDashboard: React.FC = () => {
     }
   };
 
-  const moveToProduction = async (request: BiodataRequest): Promise<void> => {
+  const moveToProduction = async (request: ResumeRequest): Promise<void> => {
     if (!request.id) throw new Error("Request ID is required");
 
     await ProductionRequestStorage.saveProductionRequest({
-      biodataRequestId: request.id,
+      resumeRequestId: request.id,
       requestNumber: request.request_number,
       flowType: request.flow_type as FlowType,
       userDetails: request.user_details,
       modelDetails: request.model_details,
       profileUrl: request.profile_url,
-      biodataUrl: request.biodata_url,
+      resumeUrl: request.resume_url,
       personalDetails: request.personal_details,
       professionalDetails: request.professional_details,
       examinationDetails: request.examination_details,
@@ -195,7 +195,7 @@ const ResumeDashboard: React.FC = () => {
         currentStatusArray.pop();
       }
 
-      await BiodataRequestStorage.updateStatusBiodataRequestById(
+      await ResumeRequestStorage.updateStatusResumeRequestById(
         requestId,
         currentStatusArray
       );
@@ -212,7 +212,7 @@ const ResumeDashboard: React.FC = () => {
     try {
       setIsLoading(true);
       setError(null);
-      await BiodataRequestStorage.deleteBiodataRequestById(id);
+      await ResumeRequestStorage.deleteResumeRequestById(id);
       await fetchRequests();
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -287,7 +287,7 @@ const ResumeDashboard: React.FC = () => {
                           </span>
                         </td>
 
-                        <td>{(request.user_details as unknown as UserDetails)?.biodataFilename}</td>
+                        <td>{(request.user_details as unknown as UserDetails)?.resumeFilename}</td>
 
                         <td>
                           {(request.user_details as unknown as UserDetails)?.mobileNumber}

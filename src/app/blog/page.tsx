@@ -1,6 +1,13 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import blogPosts from '../../data/blog';
 import BlogStructure from '@/structure/blogcard/BlogCards';
+
+export const metadata: Metadata = {
+  title: 'Latest Blog Articles | Resume & Resume Writing Tips',
+  description:
+    'Explore expert tips, templates, and how-to guides for creating effective resume, resumes, and professional profiles.',
+};
 
 const BlogPage: React.FC = () => {
   return (
