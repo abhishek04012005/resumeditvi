@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ditvi-resume.example";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://resume.ditvi.org";
 
 export function GET() {
   const content = `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\n`;

@@ -4,7 +4,7 @@ import resumeList from "@/data/resume";
 import { resumeSeoTargets } from "@/lib/seo";
 import { createSlug } from "@/lib/slug";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ditvi-resume.example";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://resume.ditvi.org";
 
 const buildUrls = () => {
   const urls = [

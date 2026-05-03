@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ditvi-resume.example";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://resume.ditvi.org";
 
 export const metadata: Metadata = {
   title:
