@@ -1,5 +1,4 @@
-import { StaticImageData } from "next/image";
-import Resume1111Img from "../assets/resume/1111.png";
+import type { StaticImageData } from "next/image";
 
 interface BlogMeta {
   title: string;
@@ -138,7 +137,7 @@ const blogPosts: BlogPost[] = [
         `,
     excerpt:
       "Learn the key components that make a traditional resume compelling and impactful.",
-    image: Resume1111Img,
+    image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toLocaleDateString(
       "en-US",
@@ -279,7 +278,7 @@ const blogPosts: BlogPost[] = [
         `,
     excerpt:
       "Learn the key components that make a traditional resume compelling and impactful.",
-    image: Resume1111Img,
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
       year: "numeric",
@@ -409,7 +408,7 @@ const blogPosts: BlogPost[] = [
         `,
     excerpt:
       "Learn the key elements of writing a compelling marriage resume that reflects your values and traditions.",
-    image: Resume1111Img,
+    image: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString(
       "en-US",
@@ -538,7 +537,7 @@ const blogPosts: BlogPost[] = [
         `,
     excerpt:
       "Discover key do's and don'ts to craft a traditional resume that makes a lasting impression.",
-    image: Resume1111Img,
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 39 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
       year: "numeric",
@@ -689,6 +688,468 @@ const blogPosts: BlogPost[] = [
           "Learn the importance of ATS resumes and how AI impacts modern hiring processes.",
         keywords:
           "ATS resume, AI hiring, resume optimization",
+        articleSection: "Career Growth",
+        timeRequired: "PT7M",
+      },
+    },
+  },
+  {
+    id: 6,
+    title: "AI Resume Trends 2026: How to Stand Out in Modern Hiring",
+    content: `
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="AI Resume Trends" style="width:100%; border-radius:10px; margin-bottom:20px;" />
+
+        <h2>The Future of Resumes is AI-Driven</h2>
+        <p>In 2026, resumes are no longer just documents—they are smart profiles analyzed by AI systems. Recruiters now rely on automation, data insights, and skill-based filtering to find the best candidates quickly.</p>
+
+        <h3>1. Shift from Degree-Based to Skill-Based Hiring</h3>
+        <p>Companies now prioritize skills over degrees, making your resume content more important than ever.</p>
+        <ul>
+            <li><strong>Skills First Approach:</strong> Employers focus on what you can do, not just your education.</li>
+            <li><strong>Project-Based Proof:</strong> Real work and projects matter more than theory.</li>
+            <li><strong>Certifications Matter:</strong> Online certifications boost credibility.</li>
+            <li><strong>Portfolio Integration:</strong> Linking your work increases trust.</li>
+        </ul>
+
+        <h3>2. AI Resume Screening is Getting Smarter</h3>
+        <p>Modern ATS systems use advanced AI to evaluate resumes beyond keywords.</p>
+        <ul>
+            <li><strong>Context Understanding:</strong> AI understands meaning, not just keywords.</li>
+            <li><strong>Behavior Analysis:</strong> Career growth patterns are analyzed.</li>
+            <li><strong>Skill Matching:</strong> AI matches your profile with job requirements.</li>
+            <li><strong>Predictive Hiring:</strong> Systems predict your job performance.</li>
+        </ul>
+
+        <h3>3. Importance of Personal Branding</h3>
+        <p>Your resume is now part of your personal brand.</p>
+        <ul>
+            <li><strong>Consistent Profile:</strong> Match your resume with LinkedIn and portfolio.</li>
+            <li><strong>Professional Summary:</strong> Create a strong first impression.</li>
+            <li><strong>Unique Value:</strong> Highlight what makes you different.</li>
+        </ul>
+
+        <h3>4. Must-Have Sections in 2026 Resume</h3>
+        <ul>
+            <li><strong>Skills Section:</strong> Clearly highlight technical and soft skills.</li>
+            <li><strong>Projects:</strong> Showcase real work and achievements.</li>
+            <li><strong>Certifications:</strong> Add relevant online courses.</li>
+            <li><strong>Experience:</strong> Focus on impact and results.</li>
+        </ul>
+
+        <h3>5. Common Mistakes in Modern Resumes</h3>
+        <ul>
+            <li><strong>Ignoring AI Optimization:</strong> Not using ATS-friendly format.</li>
+            <li><strong>Generic Content:</strong> Same resume for all jobs.</li>
+            <li><strong>Lack of Metrics:</strong> Missing measurable achievements.</li>
+            <li><strong>No Online Presence:</strong> Not linking portfolio or profiles.</li>
+        </ul>
+
+        <h3>6. Tips to Make Your Resume Future-Ready</h3>
+        <ul>
+            <li><strong>Customize for Each Job:</strong> Tailor your resume every time.</li>
+            <li><strong>Use Action Words:</strong> Start sentences with strong verbs.</li>
+            <li><strong>Focus on Results:</strong> Show impact with numbers.</li>
+            <li><strong>Keep it Simple:</strong> Clean design works best.</li>
+        </ul>
+
+        <h3>7. AI Tools You Can Use</h3>
+        <ul>
+            <li><strong>Resume Builders:</strong> Create structured resumes easily.</li>
+            <li><strong>ATS Checkers:</strong> Test compatibility with hiring systems.</li>
+            <li><strong>Keyword Tools:</strong> Find relevant job keywords.</li>
+            <li><strong>Grammar Tools:</strong> Improve clarity and professionalism.</li>
+        </ul>
+
+        <h3>8. Final Thoughts</h3>
+        <p>The resume landscape is evolving rapidly with AI and automation. To stay competitive in 2026, you must create a resume that is not only ATS-friendly but also showcases your skills, achievements, and personal brand effectively.</p>
+    `,
+    excerpt:
+      "Explore the latest AI resume trends in 2026 and learn how to create a modern, job-winning resume.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+    author: "Abhishek",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "Career Growth",
+    readTime: "6 min read",
+    tags: [
+      "AI Resume",
+      "Resume Trends 2026",
+      "ATS Resume",
+      "Career Tips",
+      "Job Search"
+    ],
+    likes: 0,
+    meta: {
+      title: "AI Resume Trends 2026 | Modern Resume Guide",
+      description:
+        "Discover the latest resume trends in 2026, including AI hiring, ATS optimization, and skill-based resumes.",
+      keywords:
+        "AI resume 2026, resume trends, ATS resume, modern resume tips",
+      ogImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: "AI Resume Trends 2026: How to Stand Out",
+        author: {
+          "@type": "Person",
+          name: "Abhishek",
+        },
+        datePublished: "2026-01-01",
+        description:
+          "Learn about the latest AI-driven resume trends and how to create a future-ready resume.",
+        keywords:
+          "AI resume, ATS trends, resume tips",
+        articleSection: "Career Growth",
+        timeRequired: "PT6M",
+      },
+    },
+  },
+  {
+    id: 7,
+    title: "Best Resume Guide for Freshers: How to Get Your First Job in 2026",
+    content: `
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Fresher Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />
+
+        <h2>Why Freshers Need a Strong Resume</h2>
+        <p>As a fresher, your resume is your first opportunity to impress recruiters. Without prior job experience, your resume must highlight your skills, projects, and potential effectively. In today’s AI-driven hiring process, a well-structured resume can make all the difference.</p>
+
+        <h3>1. What Recruiters Look for in Freshers</h3>
+        <p>Recruiters understand that freshers may not have experience, but they look for other important qualities.</p>
+        <ul>
+            <li><strong>Skills:</strong> Technical and soft skills relevant to the job.</li>
+            <li><strong>Projects:</strong> Practical work that shows your abilities.</li>
+            <li><strong>Education:</strong> Academic performance and relevant subjects.</li>
+            <li><strong>Learning Attitude:</strong> Willingness to grow and adapt.</li>
+        </ul>
+
+        <h3>2. Best Resume Structure for Freshers</h3>
+        <p>A clean and simple structure helps both ATS systems and recruiters understand your profile.</p>
+        <ul>
+            <li><strong>Career Objective:</strong> A short statement about your goals.</li>
+            <li><strong>Education:</strong> Include degree, college, and percentage.</li>
+            <li><strong>Skills:</strong> Highlight relevant tools and technologies.</li>
+            <li><strong>Projects:</strong> Showcase practical work with outcomes.</li>
+            <li><strong>Certifications:</strong> Add online courses and achievements.</li>
+        </ul>
+
+        <h3>3. Importance of ATS for Freshers</h3>
+        <p>Even as a fresher, your resume must pass ATS filters.</p>
+        <ul>
+            <li><strong>Keyword Optimization:</strong> Use job-related keywords.</li>
+            <li><strong>Simple Formatting:</strong> Avoid complex designs.</li>
+            <li><strong>Clear Sections:</strong> Use standard headings.</li>
+            <li><strong>Readable Content:</strong> Keep it structured and clean.</li>
+        </ul>
+
+        <h3>4. Common Mistakes Freshers Make</h3>
+        <ul>
+            <li><strong>Adding Irrelevant Information:</strong> Focus only on useful content.</li>
+            <li><strong>Using Fancy Designs:</strong> ATS may not read them properly.</li>
+            <li><strong>No Projects:</strong> Missing practical work reduces impact.</li>
+            <li><strong>Spelling Errors:</strong> Shows lack of attention to detail.</li>
+        </ul>
+
+        <h3>5. How to Make Your Resume Stand Out</h3>
+        <ul>
+            <li><strong>Add Projects:</strong> Include real-world or academic projects.</li>
+            <li><strong>Use Numbers:</strong> Show results (e.g., improved performance by 20%).</li>
+            <li><strong>Customize Resume:</strong> Tailor it for each job role.</li>
+            <li><strong>Keep it One Page:</strong> Short and impactful is best.</li>
+        </ul>
+
+        <h3>6. AI Tips for Freshers</h3>
+        <ul>
+            <li><strong>Use AI Tools:</strong> Improve content and formatting.</li>
+            <li><strong>Analyze Job Description:</strong> Extract important keywords.</li>
+            <li><strong>Improve Language:</strong> Make sentences professional.</li>
+            <li><strong>Optimize for ATS:</strong> Test your resume before applying.</li>
+        </ul>
+
+        <h3>7. Final Checklist</h3>
+        <ul>
+            <li><strong>Clear Format:</strong> Easy to read and ATS-friendly.</li>
+            <li><strong>No Errors:</strong> Proofread carefully.</li>
+            <li><strong>Relevant Content:</strong> Focus on skills and projects.</li>
+            <li><strong>Updated Information:</strong> Keep it current.</li>
+        </ul>
+
+        <h3>8. Final Thoughts</h3>
+        <p>Getting your first job may seem challenging, but a strong resume can open many doors. Focus on your skills, projects, and learning attitude. With the right approach and ATS optimization, you can stand out even as a fresher in today’s competitive job market.</p>
+    `,
+    excerpt:
+      "Learn how freshers can create a powerful resume in 2026 with AI tips, ATS optimization, and proven strategies to land their first job.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    author: "Abhishek",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "Career Growth",
+    readTime: "6 min read",
+    tags: [
+      "Fresher Resume",
+      "Resume Tips",
+      "ATS Resume",
+      "First Job",
+      "Career Start"
+    ],
+    likes: 0,
+    meta: {
+      title: "Best Resume for Freshers 2026 | First Job Guide",
+      description:
+        "Complete guide for freshers to create a job-winning resume with ATS optimization and AI tips.",
+      keywords:
+        "fresher resume, resume for freshers 2026, ATS resume, first job resume tips",
+      ogImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: "Best Resume Guide for Freshers",
+        author: {
+          "@type": "Person",
+          name: "Abhishek",
+        },
+        datePublished: "2026-01-01",
+        description:
+          "Step-by-step guide for freshers to create an effective resume and get their first job.",
+        keywords:
+          "fresher resume, ATS resume, resume tips",
+        articleSection: "Career Growth",
+        timeRequired: "PT6M",
+      },
+    },
+  },
+  {
+    id: 8,
+    title: "How to Get a Job at Google: Resume Tips That Actually Work in 2026",
+    content: `
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Google Job Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />
+
+        <h2>Why Getting a Job at Google is Competitive</h2>
+        <p>Google receives millions of applications every year, making it one of the most competitive companies to get into. To stand out, your resume must be highly optimized, achievement-focused, and aligned with AI-driven hiring systems.</p>
+
+        <h3>1. What Google Looks for in Candidates</h3>
+        <p>Google focuses on skills, problem-solving ability, and real impact rather than just degrees.</p>
+        <ul>
+            <li><strong>Strong Technical Skills:</strong> Especially in coding, data, or problem-solving roles.</li>
+            <li><strong>Projects & Innovation:</strong> Real-world projects and creative solutions.</li>
+            <li><strong>Leadership:</strong> Ability to take initiative and lead.</li>
+            <li><strong>Googleyness:</strong> Collaboration, curiosity, and adaptability.</li>
+        </ul>
+
+        <h3>2. Importance of ATS & AI Screening</h3>
+        <p>Even top companies like Google use automated systems to filter resumes.</p>
+        <ul>
+            <li><strong>Keyword Optimization:</strong> Match your resume with job descriptions.</li>
+            <li><strong>Structured Format:</strong> Keep it simple and machine-readable.</li>
+            <li><strong>Clear Sections:</strong> Use standard headings.</li>
+            <li><strong>Relevant Experience:</strong> Focus only on impactful work.</li>
+        </ul>
+
+        <h3>3. How to Structure Your Resume for Google</h3>
+        <ul>
+            <li><strong>Professional Summary:</strong> Short and impactful introduction.</li>
+            <li><strong>Skills:</strong> Highlight key technical and soft skills.</li>
+            <li><strong>Projects:</strong> Showcase real-world work with measurable impact.</li>
+            <li><strong>Experience:</strong> Focus on achievements, not responsibilities.</li>
+            <li><strong>Education:</strong> Include relevant coursework and achievements.</li>
+        </ul>
+
+        <h3>4. The Power of Numbers</h3>
+        <p>Google values measurable impact in resumes.</p>
+        <ul>
+            <li><strong>Do:</strong> "Developed a web app used by 5,000+ users."</li>
+            <li><strong>Don't:</strong> "Developed a web application."</li>
+            <li><strong>Do:</strong> "Improved system performance by 30%."</li>
+            <li><strong>Don't:</strong> "Worked on system optimization."</li>
+        </ul>
+
+        <h3>5. Common Mistakes to Avoid</h3>
+        <ul>
+            <li><strong>Generic Resume:</strong> Not customizing for Google roles.</li>
+            <li><strong>Too Much Design:</strong> Fancy resumes fail ATS screening.</li>
+            <li><strong>No Projects:</strong> Missing proof of skills.</li>
+            <li><strong>Lack of Metrics:</strong> No measurable achievements.</li>
+        </ul>
+
+        <h3>6. AI Tips to Improve Your Chances</h3>
+        <ul>
+            <li><strong>Analyze Job Descriptions:</strong> Extract keywords and required skills.</li>
+            <li><strong>Use AI Resume Tools:</strong> Improve structure and content.</li>
+            <li><strong>Practice Coding & Interviews:</strong> Prepare for technical rounds.</li>
+            <li><strong>Build Portfolio:</strong> Showcase your work online.</li>
+        </ul>
+
+        <h3>7. Extra Tips to Stand Out</h3>
+        <ul>
+            <li><strong>Open Source Contributions:</strong> Show real-world impact.</li>
+            <li><strong>Internships:</strong> Gain practical experience.</li>
+            <li><strong>Networking:</strong> Connect with professionals on LinkedIn.</li>
+            <li><strong>Consistency:</strong> Apply regularly and keep improving.</li>
+        </ul>
+
+        <h3>8. Final Thoughts</h3>
+        <p>Getting a job at Google is challenging, but with the right resume strategy, it becomes achievable. Focus on skills, measurable achievements, and AI optimization. A strong resume is your first step toward landing your dream job at top tech companies.</p>
+    `,
+    excerpt:
+      "Learn how to create a powerful resume to get a job at Google with AI tips, ATS optimization, and proven strategies.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    author: "Abhishek",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "Career Growth",
+    readTime: "7 min read",
+    tags: [
+      "Google Jobs",
+      "ATS Resume",
+      "AI Resume",
+      "Tech Careers",
+      "Resume Tips"
+    ],
+    likes: 0,
+    meta: {
+      title: "How to Get a Job at Google | Resume Tips 2026",
+      description:
+        "Step-by-step guide to creating a resume that helps you get a job at Google with ATS and AI optimization.",
+      keywords:
+        "google job resume, how to get job at google, ATS resume tips, tech job resume",
+      ogImage: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: "How to Get a Job at Google",
+        author: {
+          "@type": "Person",
+          name: "Abhishek",
+        },
+        datePublished: "2026-01-01",
+        description:
+          "Learn proven resume strategies to land a job at Google.",
+        keywords:
+          "google jobs, resume tips, ATS resume",
+        articleSection: "Career Growth",
+        timeRequired: "PT7M",
+      },
+    },
+  },
+  {
+    id: 9,
+    title: "How to Get a Job at Microsoft: Resume Strategies for 2026",
+    content: `
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Microsoft Job Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />
+
+        <h2>Why Microsoft Hiring is Highly Competitive</h2>
+        <p>Microsoft attracts millions of applicants worldwide for roles in software, cloud, AI, and business operations. To stand out, your resume must clearly show your skills, impact, and ability to solve real-world problems.</p>
+
+        <h3>1. What Microsoft Looks for in Candidates</h3>
+        <p>Microsoft focuses on a mix of technical expertise and growth mindset.</p>
+        <ul>
+            <li><strong>Problem-Solving Skills:</strong> Ability to analyze and solve complex challenges.</li>
+            <li><strong>Technical Expertise:</strong> Strong foundation in your domain (coding, cloud, data, etc.).</li>
+            <li><strong>Growth Mindset:</strong> Willingness to learn, adapt, and improve continuously.</li>
+            <li><strong>Collaboration:</strong> Ability to work effectively in teams.</li>
+        </ul>
+
+        <h3>2. Importance of ATS & AI Screening</h3>
+        <p>Like other top companies, Microsoft uses ATS and AI systems to filter resumes.</p>
+        <ul>
+            <li><strong>Keyword Matching:</strong> Align your resume with job descriptions.</li>
+            <li><strong>Clear Structure:</strong> Use standard headings and simple layout.</li>
+            <li><strong>Readable Content:</strong> Avoid complex designs or graphics.</li>
+            <li><strong>Relevant Experience:</strong> Focus on impactful work.</li>
+        </ul>
+
+        <h3>3. Ideal Resume Structure for Microsoft</h3>
+        <ul>
+            <li><strong>Summary:</strong> Brief introduction highlighting your strengths.</li>
+            <li><strong>Skills:</strong> Technical and soft skills relevant to the role.</li>
+            <li><strong>Experience:</strong> Focus on achievements and results.</li>
+            <li><strong>Projects:</strong> Show real-world applications of your skills.</li>
+            <li><strong>Education:</strong> Include relevant coursework and achievements.</li>
+        </ul>
+
+        <h3>4. Focus on Impact (Use Numbers)</h3>
+        <p>Microsoft values measurable achievements.</p>
+        <ul>
+            <li><strong>Do:</strong> "Reduced system downtime by 40% through optimization."</li>
+            <li><strong>Don't:</strong> "Worked on system improvements."</li>
+            <li><strong>Do:</strong> "Built a cloud solution used by 2,000+ users."</li>
+            <li><strong>Don't:</strong> "Developed a cloud-based system."</li>
+        </ul>
+
+        <h3>5. Common Mistakes to Avoid</h3>
+        <ul>
+            <li><strong>Generic Resume:</strong> Not tailoring for Microsoft roles.</li>
+            <li><strong>Too Much Design:</strong> ATS may fail to read complex layouts.</li>
+            <li><strong>No Achievements:</strong> Listing duties instead of results.</li>
+            <li><strong>Irrelevant Content:</strong> Adding unnecessary information.</li>
+        </ul>
+
+        <h3>6. AI Tips to Improve Your Resume</h3>
+        <ul>
+            <li><strong>Use Job Descriptions:</strong> Extract keywords and required skills.</li>
+            <li><strong>Optimize Content:</strong> Use AI tools to refine wording.</li>
+            <li><strong>Test ATS Compatibility:</strong> Ensure your resume passes screening.</li>
+            <li><strong>Keep Updating:</strong> Add new skills and experiences regularly.</li>
+        </ul>
+
+        <h3>7. Extra Tips to Stand Out</h3>
+        <ul>
+            <li><strong>Cloud & AI Skills:</strong> Knowledge of Azure, AI, or data tools is valuable.</li>
+            <li><strong>Certifications:</strong> Microsoft certifications boost credibility.</li>
+            <li><strong>Internships:</strong> Practical experience gives you an edge.</li>
+            <li><strong>Networking:</strong> Connect with professionals and recruiters.</li>
+        </ul>
+
+        <h3>8. Final Thoughts</h3>
+        <p>Landing a job at Microsoft requires more than just qualifications—it requires a smart, ATS-friendly resume that highlights your impact and skills. Focus on measurable achievements, continuous learning, and AI optimization to increase your chances of success.</p>
+    `,
+    excerpt:
+      "Learn how to create a powerful resume to get a job at Microsoft with ATS optimization, AI tips, and proven strategies.",
+    image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+    author: "Abhishek",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "Career Growth",
+    readTime: "7 min read",
+    tags: [
+      "Microsoft Jobs",
+      "ATS Resume",
+      "AI Resume",
+      "Tech Careers",
+      "Resume Tips"
+    ],
+    likes: 0,
+    meta: {
+      title: "How to Get a Job at Microsoft | Resume Tips 2026",
+      description:
+        "Step-by-step guide to creating a resume that helps you get a job at Microsoft using ATS and AI optimization.",
+      keywords:
+        "microsoft job resume, how to get job at microsoft, ATS resume tips, tech resume guide",
+      ogImage: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: "How to Get a Job at Microsoft",
+        author: {
+          "@type": "Person",
+          name: "Abhishek",
+        },
+        datePublished: "2026-01-01",
+        description:
+          "Learn proven resume strategies to land a job at Microsoft.",
+        keywords:
+          "microsoft jobs, resume tips, ATS resume",
         articleSection: "Career Growth",
         timeRequired: "PT7M",
       },

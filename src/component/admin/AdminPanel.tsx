@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AdminPanel.module.css";
 import { ContactUsStorage } from "@/supabase/ContactSupabase";
+import { EnquiryPopupStorage } from "@/supabase/EnquiryPopup";
 import { AdminAuthStorage } from "@/supabase/AdminAuth";
 
 interface ContactMessage {
@@ -10,6 +11,7 @@ interface ContactMessage {
   name: string;
   mobile: string;
   message: string;
+  status?: string;
   created_at: string;
 }
 
@@ -22,6 +24,7 @@ const AdminPanel = () => {
   const [tab, setTab] = useState<'enquiry' | 'contact'>('enquiry');
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [info, setInfo] = useState<string | null>(null);
+  const [updateLoadingId, setUpdateLoadingId] = useState<number | null>(null);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -33,15 +36,33 @@ const AdminPanel = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const contactData = await ContactUsStorage.getAllContactUs();
-      setMessages(contactData.map((item) => ({
-        id: item.id,
-        name: item.name,
-        mobile: item.mobile,
-        message: item.message,
-        created_at: item.created_at,
-      })));
-      setInfo('Loaded enquiry and contact messages from Supabase.');
+      if (tab === 'contact') {
+        const contactData = await ContactUsStorage.getAllContactUs();
+        setMessages(
+          contactData.map((item) => ({
+            id: item.id,
+            name: item.name,
+            mobile: item.mobile,
+            message: item.message,
+            status: item.status,
+            created_at: item.created_at,
+          }))
+        );
+        setInfo('Loaded contact messages from Supabase.');
+      } else {
+        const enquiryData = await EnquiryPopupStorage.getAllEnquiries();
+        setMessages(
+          enquiryData.map((item) => ({
+            id: item.id,
+            name: item.name,
+            mobile: item.mobile_number,
+            message: item.service,
+            status: item.status,
+            created_at: item.created_at,
+          }))
+        );
+        setInfo('Loaded enquiry requests from Supabase.');
+      }
     } catch (err) {
       setError('Unable to load messages.');
     } finally {
@@ -78,6 +99,24 @@ const AdminPanel = () => {
     setUsername("");
     setPassword("");
     setMessages([]);
+  };
+
+  const handleStatusChange = async (id: number, status: string) => {
+    setUpdateLoadingId(id);
+    setError(null);
+    try {
+      if (tab === 'contact') {
+        await ContactUsStorage.updateContactStatus(id, status);
+      } else {
+        await EnquiryPopupStorage.updateEnquiryStatus(id, status);
+      }
+      fetchMessages();
+      setInfo(`Updated ${tab} status successfully.`);
+    } catch (err) {
+      setError('Unable to update status.');
+    } finally {
+      setUpdateLoadingId(null);
+    }
   };
 
   return (
@@ -170,8 +209,10 @@ const AdminPanel = () => {
                   <tr>
                     <th>Name</th>
                     <th>Mobile</th>
-                    <th>Message</th>
+                    <th>{tab === 'enquiry' ? 'Service' : 'Message'}</th>
+                    <th>Status</th>
                     <th>Date</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -181,12 +222,25 @@ const AdminPanel = () => {
                         <td>{item.name}</td>
                         <td>{item.mobile}</td>
                         <td className={styles.breakText}>{item.message}</td>
+                        <td>{item.status ?? 'New'}</td>
                         <td>{new Date(item.created_at).toLocaleString()}</td>
+                        <td>
+                          <select
+                            value={item.status ?? 'New'}
+                            onChange={(e) => handleStatusChange(item.id, e.target.value)}
+                            disabled={updateLoadingId === item.id}
+                          >
+                            <option value="New">New</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                            <option value="Closed">Closed</option>
+                          </select>
+                        </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={4} style={{ padding: '24px', textAlign: 'center' }}>
+                      <td colSpan={6} style={{ padding: '24px', textAlign: 'center' }}>
                         {isLoading ? 'Loading...' : 'No records found.'}
                       </td>
                     </tr>

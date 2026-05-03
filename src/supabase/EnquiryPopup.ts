@@ -1,3 +1,4 @@
+import { supabase } from './Supabase';
 import { supabaseServer } from './SupabaseServer';
 
 export interface EnquiryPopupEntry {
@@ -11,6 +12,7 @@ export interface EnquiryPopupResponse {
   name: string;
   mobile_number: string;
   service: string;
+  status: string;
   created_at: string;
 }
 
@@ -39,9 +41,10 @@ export const EnquiryPopupStorage = {
             name,
             mobile_number: mobileNumber,
             service,
+            status: 'New',
           },
         ])
-        .select('id, name, mobile_number, service, created_at')
+        .select('id, name, mobile_number, service, status, created_at')
         .single();
 
       if (error) {
@@ -64,6 +67,58 @@ export const EnquiryPopupStorage = {
         throw error;
       }
       throw new EnquiryPopupError('Failed to save enquiry', error);
+    }
+  },
+
+  async getAllEnquiries(): Promise<EnquiryPopupResponse[]> {
+    try {
+      const { data, error } = await supabase
+        .from('enquiry_popup')
+        .select('id, name, mobile_number, service, status, created_at')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        throw new EnquiryPopupError('Failed to fetch enquiries', error);
+      }
+
+      if (!data) {
+        return [];
+      }
+
+      return data as EnquiryPopupResponse[];
+    } catch (error) {
+      console.error('Error fetching enquiries:', error);
+      if (error instanceof EnquiryPopupError) {
+        throw error;
+      }
+      throw new EnquiryPopupError('Unexpected error while fetching enquiries', error);
+    }
+  },
+
+  async updateEnquiryStatus(id: number, status: string): Promise<EnquiryPopupResponse> {
+    try {
+      const { data, error } = await supabase
+        .from('enquiry_popup')
+        .update({ status })
+        .eq('id', id)
+        .select('id, name, mobile_number, service, status, created_at')
+        .single();
+
+      if (error) {
+        throw new EnquiryPopupError(`Failed to update enquiry status for ID: ${id}`, error);
+      }
+
+      if (!data) {
+        throw new EnquiryPopupError(`No data returned after updating enquiry status for ID: ${id}`);
+      }
+
+      return data as EnquiryPopupResponse;
+    } catch (error) {
+      console.error('Error updating enquiry status:', error);
+      if (error instanceof EnquiryPopupError) {
+        throw error;
+      }
+      throw new EnquiryPopupError(`Unexpected error while updating enquiry status for ID: ${id}`, error);
     }
   },
 };

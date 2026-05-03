@@ -108,12 +108,10 @@ const Footer: React.FC = () => {
             </p>
           </div>
           <div className={styles.footerLegal}>
-            <Link href="/privacy" className={styles.footerLegalLink}>
-              Privacy Policy
+            <Link href="/admin" className={styles.footerLegalLink}>
+             Admin
             </Link>
-            <Link href="/terms" className={styles.footerLegalLink}>
-              Terms of Service
-            </Link>
+         
           </div>
         </div>
       </div>

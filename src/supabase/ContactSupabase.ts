@@ -8,12 +8,14 @@ interface ContactUs {
   name: string;
   mobile: string;
   message: string;
+  status?: string;
   created_at?: string;
   deleted?: boolean;
 }
 
 interface ContactUsResponse extends ContactUs {
   id: number;
+  status: string;
   created_at: string;
   deleted: boolean;
 }
@@ -79,6 +81,33 @@ export const ContactUsStorage = {
         throw error;
       }
       throw new ContactUsStorageError('Unexpected error while fetching contact messages', error);
+    }
+  },
+
+  async updateContactStatus(id: number, status: string): Promise<ContactUsResponse> {
+    try {
+      const { data, error } = await supabase
+        .from('contact_us')
+        .update({ status })
+        .eq('id', id)
+        .select('*')
+        .single();
+
+      if (error) {
+        throw new ContactUsStorageError(`Failed to update contact status for ID: ${id}`, error);
+      }
+
+      if (!data) {
+        throw new ContactUsStorageError(`No data returned after updating contact status for ID: ${id}`);
+      }
+
+      return data as ContactUsResponse;
+    } catch (error) {
+      console.error('Error updating contact status:', error);
+      if (error instanceof ContactUsStorageError) {
+        throw error;
+      }
+      throw new ContactUsStorageError(`Unexpected error while updating contact status for ID: ${id}`, error);
     }
   },
 

@@ -18,45 +18,71 @@ const geistMono = Geist_Mono({
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ditvi-resume.example";
 
 export const metadata: Metadata = {
-  title: "Ditvi Resume | Traditional Resume & Professional Resume Templates",
+  title:
+    "Ditvi Resume | AI ATS-Friendly Resume Builder, Professional CV & Marriage Biodata Templates",
+  
   description:
-    "Design and download traditional resume, marriage profiles, college resumes, and professional CVs tailored for students, job seekers, and veterans.",
+    "Create AI-powered ATS-friendly resumes, professional CVs, traditional marriage biodata, and college resumes. Build, customize, and download job-winning resumes instantly with Ditvi Resume.",
+  
   metadataBase: new URL(baseUrl),
+
   keywords: [
-    "traditional resume",
-    "resume templates",
-    "marriage resume",
-    "professional resume",
-    "college resume",
-    "navy resume",
+    "AI resume builder",
+    "ATS resume builder",
     "ATS-friendly resume",
-    "resume maker",
+    "resume maker online free",
+    "professional CV templates",
+    "modern resume templates",
+    "traditional resume India",
+    "marriage biodata maker",
+    "biodata for marriage format",
+    "college resume for students",
+    "fresher resume templates",
+    "government job resume India",
+    "navy army resume format",
+    "resume builder with AI",
+    "best resume builder 2026",
   ],
+
+  authors: [{ name: "Ditvi Resume Team" }],
+  creator: "Ditvi Resume",
+  publisher: "Ditvi Resume",
+
+  category: "Career & Jobs",
+
   openGraph: {
-    title: "Ditvi Resume | Traditional Resume & Professional Resume Templates",
+    title:
+      "AI Resume Builder | ATS-Friendly CV, Marriage Biodata & Professional Templates",
     description:
-      "Design and download traditional resume, marriage profiles, college resumes, and professional CVs tailored for students, job seekers, and veterans.",
+      "Build job-winning ATS resumes, professional CVs, and traditional marriage biodata with AI. Fast, customizable, and recruiter-approved templates.",
     type: "website",
+    url: baseUrl,
     siteName: "Ditvi Resume",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Professional traditional resume templates",
+        alt: "AI ATS Resume Builder - Ditvi Resume",
       },
     ],
+    locale: "en_IN",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Ditvi Resume | Traditional Resume & Professional Resume Templates",
+    title:
+      "AI Resume Builder | ATS-Friendly CV & Biodata Templates",
     description:
-      "Design and download traditional resume, marriage profiles, college resumes, and professional CVs tailored for students, job seekers, and veterans.",
+      "Create ATS-friendly resumes, CVs, and marriage biodata instantly using AI-powered templates.",
     images: ["/og-image.png"],
+    creator: "@ditviresume",
   },
+
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -65,13 +91,22 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   verification: {
     google: "U61z9WvB238RUEavCgIuOpCpDLFPVOMv2i-Ax3ACxPI",
   },
+
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", sizes: "16x16" },
+    ],
     apple: "/apple-touch-icon.png",
+  },
+
+  alternates: {
+    canonical: baseUrl,
   },
 };
 
