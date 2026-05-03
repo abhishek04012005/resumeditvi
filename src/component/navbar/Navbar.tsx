@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import styles from "./navbar.module.css";
 import { mainNav } from "../../data/navItems";
 import Image from "next/image";
-import DitviLogo from '../../../public/logo1.png'
+import DitviLogo from '../../../public/logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

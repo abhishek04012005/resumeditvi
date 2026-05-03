@@ -31,40 +31,35 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <Background>
-      <div className={styles.footerSection}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerMain}>
-            <div className={styles.footerBrand}>
-              <Link href="/" className={styles.footerLogo}>
-                <Image src={Logo} alt="Ditvi Resume Logo" priority />
-              </Link>
-              <p className={styles.footerDescription}>
-                Creating lasting impressions with our expertly crafted
-                traditional resume designs.
-              </p>
-              <div className={styles.footerSocialLinkWrapper}>
-                {socialLinks.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <a
-                      key={link.id}
-                      href={link.url}
-                      className={`${styles.footerSocialLink} ${
-                        styles[link.className]
-                      }`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon />
-                    </a>
-                  );
-                })}
-              </div>
+      <div className={styles.footerWrapper}>
+        <div className={styles.footerTop}>
+          <div className={styles.footerBrand}>
+            <Link href="/" className={styles.footerLogo}>
+              <Image src={Logo} alt="Ditvi Resume Logo" priority />
+            </Link>
+            <p className={styles.footerDescription}>
+              Expert resume design and career support for professionals who want to stand out with confidence.
+            </p>
+            <div className={styles.footerSocialLinkWrapper}>
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    className={`${styles.footerSocialLink} ${styles[link.className]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
-          <div className={styles.footerLinks}>
-            <div className={styles.footerSection}>
+
+          <div className={styles.footerNav}>
+            <div className={styles.footerCol}>
               <h3 className={styles.footerTitle}>Quick Links</h3>
               <ul className={styles.footerList}>
                 {footerQuickLinks.map((link: QuickLink) => (
@@ -83,7 +78,8 @@ const Footer: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className={styles.footerSection}>
+
+            <div className={styles.footerCol}>
               <h3 className={styles.footerTitle}>Contact Info</h3>
               <ul className={styles.footerList}>
                 {contactInfo.map((info: ContactInfo) => {
@@ -92,9 +88,7 @@ const Footer: React.FC = () => {
                     <li key={info.id} className={styles.footerContactItem}>
                       <Icon className={styles.footerIcon} />
                       {info.isText ? (
-                        <span className={styles.footerText}>
-                          {info.content}
-                        </span>
+                        <span className={styles.footerText}>{info.content}</span>
                       ) : (
                         <a href={info.href} className={styles.footerLink}>
                           {info.content}
@@ -107,11 +101,11 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.footerBottom}>
           <div className={styles.footerCopyright}>
             <p>
-              Ditvi Resume is a unit of <strong>Ditvi Foundation</strong> | ©{" "}
-              {new Date().getFullYear()} Ditvi Resume. All rights reserved.
+              Ditvi Resume is a unit of <strong>Ditvi Foundation</strong> | © {new Date().getFullYear()} Ditvi Resume. All rights reserved.
             </p>
           </div>
           <div className={styles.footerLegal}>
@@ -124,7 +118,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-    </Background>
   );
 };
 
