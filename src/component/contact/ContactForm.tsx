@@ -20,6 +20,7 @@ const ContactForm = () => {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -69,6 +70,7 @@ const ContactForm = () => {
       });
 
       setStatus("success");
+      setShowSuccessModal(true);
       resetForm();
     } catch (error) {
       console.error("Form submission error:", error);
@@ -77,6 +79,11 @@ const ContactForm = () => {
         error instanceof Error ? error.message : "Failed to send message"
       );
     }
+  };
+
+  const closeModal = () => {
+    setShowSuccessModal(false);
+    setStatus("idle");
   };
 
   const handleInputChange = (
@@ -148,21 +155,36 @@ const ContactForm = () => {
       </div>
 
       <Button
+        type="submit"
+        disabled={status === "submitting"}
         className={styles.CustomSubmitButton}
       >
         {status === "submitting" ? "Sending..." : "Send Message"}
       </Button>
 
-
-      {status === "success" && (
-        <p className={styles.successMessage}>
-          Thank you! Your message has been sent successfully.
-        </p>
-      )}
       {status === "error" && (
         <p className={styles.errorMessage}>
           {errorMessage || "Failed to send message. Please try again."}
         </p>
+      )}
+
+      {showSuccessModal && (
+        <div className={styles.successModalOverlay} onClick={closeModal}>
+          <div
+            className={styles.successModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3>Message Sent</h3>
+            <p>Your message has been sent successfully. We will contact you soon.</p>
+            <button
+              type="button"
+              className={styles.modalCloseButton}
+              onClick={closeModal}
+            >
+              OK
+            </button>
+          </div>
+        </div>
       )}
     </form>
   );

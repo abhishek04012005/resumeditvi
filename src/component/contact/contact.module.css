@@ -198,3 +198,51 @@
   margin-top: 0.2rem;
   display: block;
 }
+
+.successModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.successModal {
+  background: white;
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.successModal h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.successModal p {
+  margin-bottom: 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.modalCloseButton {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.modalCloseButton:hover {
+  background: #184a9e;
+}
