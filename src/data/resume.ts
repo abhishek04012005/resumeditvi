@@ -11,8 +11,8 @@ const resumeList: ResumeType[] = [
     name: "Classic Resume",
     image: Resume1111Image,
     type: "resume",
-    originalPrice: 201,
-    discountPrice: 101,
+    originalPrice: 499,
+    discountPrice: 99,
     shortDescription: "An ATS-ready classic resume template with professional presentation, recruiter-friendly sections, and clear career highlights for healthcare and business professionals.",
     longDescription: "Classic Resume is built for professionals who want a polished, recruiter-friendly profile. It emphasizes measurable results, career progression, and keyword-rich skill clusters so both hiring managers and applicant tracking systems can quickly identify your strengths. Designed as a classic resume template, this format pairs strong achievement statements with a professional layout that works especially well for doctors, healthcare administrators, and corporate professionals seeking trusted presentation.",
     keyFeatures: [

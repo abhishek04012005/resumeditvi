@@ -300,9 +300,9 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
       </Container>
       <EnquiryPopup
         isOpen={isPopupOpen}
-        heading="Request Resume"
+        heading="Enquiry for Resume"
         paragraph="Please fill these details."
-        buttonTitle="Save and Continue"
+        buttonTitle="Send"
         onClose={() => {
           setIsPopupOpen(false);
         }}

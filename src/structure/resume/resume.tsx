@@ -179,7 +179,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
                     setSelectedModel(resume.slug);
                     setIsPopupOpen(true);
                   }}
-                  onPreview={() => router.push(`/resume/${resume.slug}`)}
+                  onPreview={() => router.push(`/${resume.slug}`)}
                 />
               </div>
             ))}
@@ -201,7 +201,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({
               setSelectedModel(resume.slug);
               setIsPopupOpen(true);
             }}
-            onPreview={() => router.push(`/resume/${resume.slug}`)}
+            onPreview={() => router.push(`${resume.slug}`)}
           />
         ))}
       </div>
