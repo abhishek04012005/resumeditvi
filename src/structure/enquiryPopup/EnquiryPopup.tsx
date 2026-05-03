@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // src/structure/enquiryPopup/EnquiryPopup.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./enquiryPopup.module.css";
 import Button from "../button/Button";
@@ -33,12 +33,36 @@ const EnquiryPopup: React.FC<EnquiryPopupProps> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     mobileNumber: "",
   });
 
-const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    if (isOpen) {
+      setSuccess(false);
+      setError(false);
+      setFormData({ name: "", mobileNumber: "" });
+    }
+  }, [isOpen]);
+
+  const handleClosePopup = () => {
+    setSuccess(false);
+    setFormData({ name: "", mobileNumber: "" });
+    onClose();
+  };
+
+  const handleSuccessClose = () => {
+    setSuccess(false);
+    setFormData({ name: "", mobileNumber: "" });
+    onClose();
+    if (isLeadMagnet) {
+      router.push("/resume");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   try {
@@ -60,7 +84,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     const savedName = formData.name;
     const savedMobileNumber = formData.mobileNumber;
-    const savedService = modelDetails.type || "resume";
+    const savedService = isLeadMagnet ? "resume" : modelDetails?.type?.trim() || "resume";
 
     const response = await fetch("/api/enquiry", {
       method: "POST",
@@ -79,15 +103,9 @@ const handleSubmit = async (e: React.FormEvent) => {
       throw new Error(result.error || "Failed to save enquiry");
     }
 
-    if (isLeadMagnet) {
-      setFormData({ name: "", mobileNumber: "" });
-      onClose();
-      await router.push("/resume");
-      return;
-    }
-
     setFormData({ name: "", mobileNumber: "" });
-    onClose();
+    setSuccess(true);
+    return;
   } catch (error) {
     setError(true);
     if (error instanceof Error) {
@@ -103,7 +121,11 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      if (success) {
+        handleClosePopup();
+      } else {
+        onClose();
+      }
     }
   };
 
@@ -136,7 +158,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         <button
           type="button"
           className={styles.getnowCloseButton}
-          onClick={onClose}
+          onClick={handleClosePopup}
           aria-label="Close"
         >
           &times;
@@ -145,7 +167,19 @@ const handleSubmit = async (e: React.FormEvent) => {
           <h2>{heading}</h2>
           <p>{paragraph}</p>
         </div>
-        <form onSubmit={handleSubmit}>
+        {success ? (
+          <div className={styles.successContent}>
+            <div className={styles.successIcon}>✓</div>
+            <h3 className={styles.successTitle}>Success!</h3>
+            <p className={styles.successText}>
+              Your enquiry has been submitted successfully. We will contact you soon.
+            </p>
+            <Button type="button" variant="primary" onClick={handleSuccessClose}>
+              Close
+            </Button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
           <div className={styles.getnowFormGroup}>
             <label htmlFor="name">Full Name:</label>
             <input
@@ -201,10 +235,19 @@ const handleSubmit = async (e: React.FormEvent) => {
             type="submit"
             variant="primary"
             className={styles.getnowSubmitButton}
+            disabled={isLoading}
           >
-            {buttonTitle}
+            {isLoading ? (
+              <>
+                <span className={styles.loader} />
+                Submitting...
+              </>
+            ) : (
+              buttonTitle
+            )}
           </Button>
         </form>
+        )}
       </div>
     </div>
   );

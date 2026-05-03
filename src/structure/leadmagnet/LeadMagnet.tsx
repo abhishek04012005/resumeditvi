@@ -16,7 +16,7 @@ const LeadMagnet: React.FC = () => {
   const sampleResumeDetails: SampleResumeDetails = {
     modelNumber: "0000",
     language: "English",
-    type: "Guest",
+    type: "resume",
     amount: 0,
   };
 

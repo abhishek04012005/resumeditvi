@@ -19,9 +19,11 @@ export async function POST(request: Request) {
       service: string;
     };
 
-    if (!name || !mobileNumber || !service) {
+    const savedService = service?.trim() || 'resume';
+
+    if (!name || !mobileNumber) {
       return NextResponse.json(
-        { error: 'Missing enquiry name, mobile number, or service' },
+        { error: 'Missing enquiry name or mobile number' },
         { status: 400 }
       );
     }
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
         {
           name,
           mobile_number: mobileNumber,
-          service,
+          service: savedService,
         },
       ])
       .select('id, name, mobile_number, service, created_at')

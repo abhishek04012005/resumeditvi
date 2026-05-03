@@ -6,7 +6,6 @@ import { supabase } from './Supabase';
 interface ContactUs {
   id?: number;
   name: string;
-  email: string;
   mobile: string;
   message: string;
   created_at?: string;
@@ -33,7 +32,6 @@ export const ContactUsStorage = {
         .from('contact_us')
         .insert({
           name: contactUs.name,
-          email: contactUs.email,
           mobile: contactUs.mobile,
           message: contactUs.message,
         })

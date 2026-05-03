@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../component/navbar/Navbar";
 import Footer from "@/component/footer/Footer";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -85,6 +86,13 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <div className="whatsappFloating">
+          <a
+            href="https://wa.me/919285248504?text=Hello%20*Ditvi%20Resume*%2C%0AI%E2%80%99m%20looking%20to%20create%20a%20professional%20resume.%0ACould%20you%20please%20assist%20me%20with%20the%20best%20design%20and%20format%20for%20my%20profile%3F" aria-label="Chat with us on WhatsApp"
+          >
+            <WhatsAppIcon fontSize="small" />
+          </a>
+        </div>
       </body>
     </html>
   );

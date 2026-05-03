@@ -38,7 +38,7 @@ const CONTACT_INFO = [
   {
     icon: "📞",
     title: "Call Us",
-    details: ["+91 9263767441"],
+    details: ["+91 9285248504"],
   },
   {
     icon: "✉️",

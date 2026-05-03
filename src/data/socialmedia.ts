@@ -18,7 +18,7 @@ const socialLinks: SocialLink[] = [
   {
     id: "whatsapp",
     icon: WhatsApp,
-    url: "https://wa.me/919263767441?text=Hello%20Ditvi%20Resume%2C%0AI%20want%20to%20learn%20more%20about%20your%20services.%0A%0AThank%20You%20%3A)",
+    url: "https://wa.me/919285248504?text=Hello%20Ditvi%20Resume%2C%0AI%20want%20to%20learn%20more%20about%20your%20services.%0A%0AThank%20You%20%3A)",
     className: "whatsapp",
   },
   {

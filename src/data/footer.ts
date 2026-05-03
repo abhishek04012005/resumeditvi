@@ -27,8 +27,8 @@ const contactInfo: ContactInfo[] = [
   {
     id: "phone",
     icon: Phone,
-    content: "+91 9263767441",
-    href: "tel:+919263767441",
+    content: "+91 9285248504",
+    href: "tel:+919285248504",
   },
   {
     id: "email",

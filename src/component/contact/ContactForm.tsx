@@ -7,8 +7,6 @@ import Button from "@/structure/button/Button";
 
 export interface ContactFormData {
   name: string;
-  email: string;
-  subject: string;
   message: string;
   mobile: string;
 }
@@ -16,8 +14,6 @@ export interface ContactFormData {
 const ContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
-    email: "",
-    subject: "",
     message: "",
     mobile: "",
   });
@@ -32,12 +28,6 @@ const ContactForm = () => {
 
     if (!formData.name.trim()) {
       errors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Please enter a valid email";
     }
 
     if (!formData.mobile.trim()) {
@@ -55,8 +45,6 @@ const ContactForm = () => {
   const resetForm = () => {
     setFormData({
       name: "",
-      email: "",
-      subject: "",
       message: "",
       mobile: "",
     });
@@ -76,7 +64,6 @@ const ContactForm = () => {
     try {
       await ContactUsStorage.saveContactUs({
         name: formData.name,
-        email: formData.email,
         mobile: formData.mobile,
         message: formData.message,
       });
@@ -121,24 +108,6 @@ const ContactForm = () => {
         />
         {fieldErrors.name && (
           <span className={styles.errorText}>{fieldErrors.name}</span>
-        )}
-      </div>
-
-      <div className={styles.formGroup}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-          className={`${styles.input} ${
-            fieldErrors.email ? styles.errorInput : ""
-          }`}
-          disabled={status === "submitting"}
-        />
-        {fieldErrors.email && (
-          <span className={styles.errorText}>{fieldErrors.email}</span>
         )}
       </div>
 

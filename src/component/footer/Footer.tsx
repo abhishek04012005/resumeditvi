@@ -12,7 +12,6 @@ import {
   type QuickLink,
   type ContactInfo,
 } from "../../data/footer";
-import Background from "@/structure/background/Background";
 
 const Footer: React.FC = () => {
   const pathname = usePathname();

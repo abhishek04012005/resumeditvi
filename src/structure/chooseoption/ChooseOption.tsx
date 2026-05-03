@@ -76,7 +76,7 @@ Name: ${userDetails?.name || ""}
 Mobile Number: ${userDetails?.mobileNumber || ""}
 Model Number: ${modelDetails?.modelNumber || ""}`;
 
-      const whatsappUrl = `https://wa.me/919263767441?text=${encodeURIComponent(
+      const whatsappUrl = `https://wa.me/919285248504?text=${encodeURIComponent(
         whatsappMessage
       )}`;
       window.open(whatsappUrl, "_blank");
