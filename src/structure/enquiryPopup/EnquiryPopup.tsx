@@ -98,9 +98,19 @@ const EnquiryPopup: React.FC<EnquiryPopupProps> = ({
       }),
     });
 
-    const result = await response.json();
+    const text = await response.text();
+    let result: any = null;
+
+    if (text) {
+      try {
+        result = JSON.parse(text);
+      } catch {
+        result = { error: text };
+      }
+    }
+
     if (!response.ok) {
-      throw new Error(result.error || "Failed to save enquiry");
+      throw new Error(result?.error || text || "Failed to save enquiry");
     }
 
     setFormData({ name: "", mobileNumber: "" });

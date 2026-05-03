@@ -1,0 +1,263 @@
+:root {
+  color-scheme: light;
+}
+
+.adminPage {
+  padding: 120px 24px 48px;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(180deg, rgba(var(--background-a), 0.9) 0%, rgba(255, 255, 255, 1) 100%);
+  color: var(--text-primary);
+}
+
+.adminCard {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.adminHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.adminTitle {
+  font-size: clamp(2rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.adminSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.loginForm,
+.statsGrid,
+.panelBody,
+.tableWrapper {
+  width: 100%;
+}
+
+.loginForm {
+  display: grid;
+  gap: 18px;
+}
+
+.loginField {
+  display: grid;
+  gap: 8px;
+}
+
+.loginField label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.loginField input {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text-primary);
+  transition: border-color 0.25s ease;
+}
+
+.loginField input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(var(--primary-color-a), 0.08);
+}
+
+.loginActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loginButton,
+.logoutButton,
+.tabButton,
+.actionButton,
+.deleteButton {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0.95rem 1.3rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.loginButton,
+.actionButton {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.logoutButton {
+  background: rgba(var(--secondary-color-a), 0.08);
+  color: var(--secondary-color);
+}
+
+.logoutButton:hover,
+.loginButton:hover,
+.actionButton:hover,
+.deleteButton:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.errorBox,
+.infoBox {
+  border-radius: 18px;
+  padding: 14px 18px;
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+}
+
+.infoBox {
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--primary-color);
+}
+
+.panelBody {
+  display: grid;
+  gap: 24px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.statCard {
+  background: linear-gradient(180deg, rgba(var(--primary-color-a), 0.12), rgba(255, 255, 255, 0.95));
+  border: 1px solid rgba(var(--primary-color-a), 0.18);
+  border-radius: 24px;
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.statLabel {
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tabButton {
+  background: rgba(var(--primary-color-a), 0.08);
+  color: var(--text-primary);
+}
+
+.tabButton.active {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.adminTable th,
+.adminTable td {
+  padding: 18px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adminTable th {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.adminTable td {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.tableHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.tableHeader h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.tableHeader .actionButton {
+  padding: 0.85rem 1.2rem;
+}
+
+.deleteButton {
+  background: #f97316;
+  color: #fff;
+}
+
+.breakText {
+  white-space: normal;
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .adminPage {
+    padding: 100px 16px 32px;
+  }
+
+  .adminCard {
+    padding: 24px;
+  }
+
+  .adminHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tableHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

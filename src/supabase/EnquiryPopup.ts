@@ -1,4 +1,4 @@
-import { supabase } from './Supabase';
+import { supabaseServer } from './SupabaseServer';
 
 export interface EnquiryPopupEntry {
   name: string;
@@ -32,7 +32,7 @@ export const EnquiryPopupStorage = {
         throw new EnquiryPopupError('Invalid enquiry data provided');
       }
 
-      const { data, error } = await supabase
+      const { data, error } = await supabaseServer
         .from('enquiry_popup')
         .insert([
           {
@@ -46,10 +46,8 @@ export const EnquiryPopupStorage = {
 
       if (error) {
         console.error('Supabase error:', error);
-        throw new EnquiryPopupError(
-          `Failed to save enquiry: ${error.message}`,
-          error
-        );
+        const message = error.message ? `Failed to save enquiry: ${error.message}` : 'Failed to save enquiry: Supabase returned an error';
+        throw new EnquiryPopupError(message, error);
       }
 
       if (!data) {
@@ -60,6 +58,9 @@ export const EnquiryPopupStorage = {
     } catch (error) {
       console.error('Error saving enquiry:', error);
       if (error instanceof EnquiryPopupError) {
+        if (error.originalError) {
+          console.error('Original error details:', error.originalError);
+        }
         throw error;
       }
       throw new EnquiryPopupError('Failed to save enquiry', error);
