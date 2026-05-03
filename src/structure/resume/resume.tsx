@@ -99,7 +99,7 @@ const BioDataCardStructure: React.FC<BioDataCardStructureProps> = ({
             onClick={onGetNow}
           >
             <ShoppingCart />
-            Get Now
+            Enquiry Now
           </Button>
           <Button
             className={styles.actionButtonCard}

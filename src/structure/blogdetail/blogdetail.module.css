@@ -1,83 +1,408 @@
 .blogDetails {
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.blogdetailPageBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .blogdetailWrapper {
+  position: relative;
+  z-index: 1;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+.bgIcon,
+.bgCircle {
+  position: absolute;
+  opacity: 0.18;
+  color: #3b82f6;
+  width: 96px;
+  height: 96px;
+}
+
+.bgIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bgIconOne {
+  top: 8%;
+  left: 4%;
+  color: rgba(59, 130, 246, 0.28);
+  animation: floatSlow 12s ease-in-out infinite alternate;
+}
+
+.bgIconTwo {
+  bottom: 10%;
+  right: 3%;
+  color: rgba(59, 130, 246, 0.24);
+  animation: floatSlow 14s ease-in-out infinite alternate-reverse;
+}
+
+.bgIconThree {
+  top: 40%;
+  right: 15%;
+  color: rgba(16, 185, 129, 0.2);
+  animation: floatTiny 10s ease-in-out infinite alternate;
+}
+
+.bgCircle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.16);
+  left: 10%;
+  bottom: 16%;
+  animation: pulseSlow 16s ease-in-out infinite alternate;
+}
+
+@keyframes floatSlow {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-22px) rotate(18deg);
+  }
+}
+
+@keyframes floatTiny {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-12px) rotate(-18deg);
+  }
+}
+
+@keyframes pulseSlow {
+  from {
+    transform: scale(0.95);
+    opacity: 0.16;
+  }
+  to {
+    transform: scale(1.08);
+    opacity: 0.22;
+  }
+}
+
+.blogdetailHero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  padding: 2rem 2rem 1.5rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff8f0 0%, #f6f8ff 100%);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.08);
+}
+
+.blogdetailHero::before,
+.blogdetailHero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.7;
+}
+
+.blogdetailHero::before {
+  top: -40px;
+  right: -80px;
+  width: 220px;
+  height: 220px;
+  background: rgba(59, 130, 246, 0.28);
+  animation: floatHero 10s ease-in-out infinite alternate;
+}
+
+.blogdetailHero::after {
+  bottom: -40px;
+  left: -90px;
+  width: 260px;
+  height: 260px;
+  background: rgba(59, 130, 246, 0.16);
+  animation: floatHero 14s ease-in-out infinite alternate-reverse;
+}
+
+.blogdetailHero > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes floatHero {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-18px) rotate(24deg);
+  }
 }
 
 .blogdetailNavigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .blogdetailActions {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  gap: 0.75rem;
 }
 
-.blogdetailLike,
-.blogdetailBookmark,
-.blogdetailShareBtn {
+.blogdetailActionButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  min-width: 3.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.16);
   background: white;
+  color: #3b46ff;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.blogdetailLike:hover,
-.blogdetailBookmark:hover,
-.blogdetailShareBtn:hover {
-  background: #f5f5f5;
+.blogdetailActionButton:hover {
+  transform: translateY(-1px);
+  background: #f8faff;
+  box-shadow: 0 12px 24px rgba(59, 70, 255, 0.12);
 }
 
-.active {
-  color: #007bff;
-  background: #e8f4ff;
+.blogdetailActionButton svg {
+  font-size: 1.1rem;
+}
+
+.blogdetailActionButton.active {
+  background: #e2e7ff;
+  color: #1d4ed8;
 }
 
 .blogdetailHeader {
-  margin-bottom: 3rem;
-  text-align: center;
+  text-align: left;
 }
 
 .blogdetailCategory {
-  color: #007bff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4338ca;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: rgba(67, 56, 202, 0.1);
+  margin-bottom: 1.25rem;
 }
 
 .blogdetailTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
+  font-size: clamp(2.4rem, 3.2vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  color: #111827;
 }
 
-.blogdetailMeta {
+.blogdetailMetaChips {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  color: #666;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.blogdetailMetaItem {
-  display: flex;
+.blogdetailMetaChip {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(226, 232, 240, 1);
+  color: #374151;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.04);
+}
+
+.metaIcon {
+  color: #4f46e5;
+}
+
+.blogdetailFeaturedImage {
+  margin-bottom: 3rem;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.08);
+}
+
+.blogdetailFeaturedImage img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.blogdetailFeaturedImage:hover img {
+  transform: scale(1.03);
+}
+
+.blogdetailContent {
+  line-height: 1.9;
+  color: #334155;
+}
+
+.blogdetailText {
+  font-size: 1.05rem;
+  margin-bottom: 2.25rem;
+}
+
+.blogdetailText h2,
+.blogdetailText h3,
+.blogdetailText h4 {
+  margin: 2rem 0 1rem;
+  color: #0f172a;
+}
+
+.blogdetailText p,
+.blogdetailText li {
+  margin-bottom: 1.4rem;
+}
+
+.blogdetailText a {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+.blogdetailTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.blogdetailTag {
+  display: inline-flex;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(67, 56, 202, 0.08);
+  color: #312e81;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.blogdetailTag:hover {
+  transform: translateY(-1px);
+  background: rgba(67, 56, 202, 0.16);
+}
+
+.blogdetailRelated {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.blogdetailRelatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.blogdetailRelatedCard {
+  cursor: pointer;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background: white;
+  border: 1px solid rgba(226, 232, 240, 1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.blogdetailRelatedCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12);
+}
+
+.relatedImage {
+  position: relative;
+  height: 220px;
+}
+
+.relatedCategory {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(59, 130, 246, 0.92);
+  color: white;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.relatedContent {
+  padding: 1.5rem;
+}
+
+.relatedContent h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+  color: #111827;
+}
+
+.relatedContent p {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+
+.relatedMeta {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+  font-size: 0.83rem;
+}
+
+@media (max-width: 768px) {
+  .blogdetailHero {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .blogdetailNavigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .blogdetailActions {
+    justify-content: flex-start;
+  }
+
+  .blogdetailTitle {
+    font-size: 2.2rem;
+  }
+
+  .blogdetailMetaChips {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .blogdetailRelatedGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .blogdetailFeaturedImage {

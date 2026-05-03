@@ -14,7 +14,7 @@ const buildUrls = () => {
     `${baseUrl}/confirmation`,
   ];
 
-  const resumeIds = resumeList.map((resume) => resume.slug.replace("resume-", "resume"));
+  const resumeIds = resumeList.map((resume) => `resume/${resume.slug}`);
 
   resumeIds.forEach((resumeId) => {
     resumeSeoTargets.forEach((target) => {

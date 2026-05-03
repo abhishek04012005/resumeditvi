@@ -12,17 +12,24 @@ import Button from "../button/Button";
 import Image from "next/image";
 import { ResumeType } from "@/types/types";
 
-const ResumeDetail: React.FC = () => {
+interface ResumeDetailProps {
+  overrideSlug?: string;
+}
+
+const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug }) => {
   const router = useRouter();
   const params = useParams<{ category?: string; resumeId?: string; slug?: string }>();
   const resumeId = params.resumeId;
   const category = params.category ?? params.slug;
-  const actualCategory = resumeId
+  const actualCategory = overrideSlug
+    ? overrideSlug
+    : resumeId
     ? resumeId.replace(/^resume(\d+)$/, "resume-$1")
     : category;
   const resume = resumeDetails.find(
     (item) => item.slug === actualCategory
   ) as ResumeType | undefined;
+
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -39,7 +46,7 @@ const ResumeDetail: React.FC = () => {
     return null;
   }
 
-  const savings = resume.originalPrice - resume.discountPrice;
+  const totalPrice = resume.discountPrice;
 
   return (
     <Background>
@@ -77,44 +84,21 @@ const ResumeDetail: React.FC = () => {
 
               <div className={styles.headingRow}>
                 <h2>{resume.name}</h2>
-                <p>Clean structure, easy-to-edit sections, and recruiter-friendly layout.</p>
-              </div>
-
-              <div className={styles.statsRow}>
-                <div className={styles.statItem}>
-                  <p className={styles.statLabel}>Starting price</p>
-                  <strong>₹{resume.discountPrice}</strong>
-                </div>
-                <div className={styles.statItem}>
-                  <p className={styles.statLabel}>You save</p>
-                  <strong>₹{savings}</strong>
-                </div>
+                <p>Professional, ATS-friendly formatting with clean sections for recruiters.</p>
               </div>
 
               <div className={styles.priceCard}>
                 <div>
-                  <span className={styles.originalPrice}>₹{resume.originalPrice}</span>
-                  <span className={styles.discountLabel}>Most popular</span>
+                  <div className={styles.priceOriginal}>
+                    <span className={styles.priceLabel}>Original</span>
+                    <span className={styles.priceValue}>₹{resume.originalPrice}</span>
+                  </div>
+                  <div className={styles.priceFinal}>
+                    <span className={styles.priceLabel}>Offer Price</span>
+                    <span className={styles.priceValue}>₹{totalPrice}</span>
+                  </div>
                 </div>
-                <div className={styles.priceTag}>₹{resume.discountPrice}</div>
-              </div>
-
-              <div className={styles.featuresBlock}>
-                <h3>What you get</h3>
-                <ul>
-                  <li>
-                    <CheckCircle className={styles.checkIcon} />
-                    ATS-friendly resume design
-                  </li>
-                  <li>
-                    <CheckCircle className={styles.checkIcon} />
-                    Editable sections for your career story
-                  </li>
-                  <li>
-                    <CheckCircle className={styles.checkIcon} />
-                    Fast delivery & ready to download
-                  </li>
-                </ul>
+                <div className={styles.priceTag}>Save ₹{resume.originalPrice - resume.discountPrice}</div>
               </div>
 
               <div className={styles.actions}>
@@ -134,15 +118,175 @@ const ResumeDetail: React.FC = () => {
                   View all templates
                 </Button>
               </div>
+            </div>
+          </div>
 
-              <div className={styles.description}>
-                <div className={styles.descriptionHeader}>
-                  <Description />
-                  <h3>About this template</h3>
+          <div className={styles.bottomDetails}>
+            <div className={styles.featuresBlock}>
+              <h3>What you get</h3>
+              <ul>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  ATS-friendly layout with recruiter-first sections
+                </li>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  Strong presentation for skills, education, and achievements
+                </li>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  Optimized resume structure for both fresher and experienced roles
+                </li>
+              </ul>
+            </div>
+            <div className={styles.featuresBlock}>
+              <h3>Resume Details</h3>
+              <ul>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  Includes editable sections for career objective and summary
+                </li>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  Highlights strengths and career achievements clearly
+                </li>
+                <li>
+                  <CheckCircle className={styles.checkIcon} />
+                  Designed for fast review by hiring managers and ATS systems
+                </li>
+              </ul>
+            </div>
+            <div className={styles.description}>
+              <div className={styles.descriptionHeader}>
+                <Description />
+                <h3>About this template</h3>
+              </div>
+              <p className={styles.descriptionText}>
+                {resume.longDescription}
+              </p>
+            </div>
+
+            <div className={styles.detailSection}>
+              <h3>Resume Detail Overview</h3>
+              <p className={styles.detailIntro}>{resume.shortDescription}</p>
+              <div className={styles.detailGrid}>
+                <div className={styles.detailCard}>
+                  <h4>Key Features</h4>
+                  <ul>
+                    {resume.keyFeatures.map((feature, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className={styles.descriptionText}>
-                  This resume template is optimized for professional presentation and clean readability. It is ideal for job seekers who want a strong first impression with a modern, structured layout.
+                <div className={styles.detailCard}>
+                  <h4>Benefits</h4>
+                  <ul>
+                    {resume.benefits.map((benefit, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.detailCard}>
+                  <h4>Best For</h4>
+                  <ul>
+                    {resume.idealFor.map((item, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.detailCard}>
+                  <h4>Highlights</h4>
+                  <ul>
+                    {resume.highlights.map((highlight, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.doDontSection}>
+                <div className={styles.doDontCard}>
+                  <h4>Do</h4>
+                  <ul>
+                    {resume.do.map((item, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.doDontCard}>
+                  <h4>Don&apos;t</h4>
+                  <ul>
+                    {resume.dont.map((item, index) => (
+                      <li key={index}>
+                        <CheckCircle className={styles.checkIcon} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.info}>
+              <div className={styles.model}>
+                <h2>Resume Summary</h2>
+                <div className={styles.divider} />
+                <p>
+                  {resume.name} is designed to help you stand out in applicant tracking systems and in front of hiring managers. It includes strong section hierarchy, skill highlights, and streamlined formatting for fresher and experienced roles.
                 </p>
+              </div>
+
+              <div className={styles.options}>
+                <div className={styles.optionsGroup}>
+                  <h3 className={styles.optionsTitle}>Key Features</h3>
+                  <ul>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      Clean, modern resume layout
+                    </li>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      ATS keyword friendly structure
+                    </li>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      Mobile-ready and recruiter-friendly
+                    </li>
+                  </ul>
+                </div>
+
+                <div className={styles.optionsGroup}>
+                  <h3 className={styles.optionsTitle}>Best For</h3>
+                  <ul>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      Freshers applying for professional jobs
+                    </li>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      Candidates needing strong experience presentation
+                    </li>
+                    <li>
+                      <CheckCircle className={styles.checkIcon} />
+                      Anyone seeking an ATS-friendly resume design
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -160,7 +304,7 @@ const ResumeDetail: React.FC = () => {
           modelNumber: selectedModel,
           language: "English",
           type: resume.type ?? "resume",
-          amount: resume.discountPrice,
+          amount: totalPrice,
         }}
       />
     </Background>

@@ -10,7 +10,7 @@ interface Resume1111PageProps {
 
 export async function generateMetadata({ params }: Resume1111PageProps): Promise<Metadata> {
   const resolvedParams = await params;
-  return getResumeDetailMetadataFromSlug(resolvedParams.slug, "resume1111");
+  return getResumeDetailMetadataFromSlug(resolvedParams.slug, "resume/resume-1111");
 }
 
 export default function Resume1111SeoPage() {

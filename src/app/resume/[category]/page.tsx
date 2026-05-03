@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   return getResumeDetailMetadata({
     titleTarget: resume.name,
     slug: resume.slug,
+    resumeId: "resume",
   });
 }
 
