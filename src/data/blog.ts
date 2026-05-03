@@ -27,7 +27,7 @@ interface BlogPost {
   title: string;
   content: string;
   excerpt: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   author: string;
   date: string;
   category: string;
@@ -579,6 +579,121 @@ const blogPosts: BlogPost[] = [
       },
     },
   },
+  {
+    id: 5,
+    title: "Why ATS Resume is Important in the Age of AI",
+    content: `
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="ATS Resume AI" style="width:100%; border-radius:10px; margin-bottom:20px;" />
+
+        <h2>What is an ATS Resume?</h2>
+        <p>An ATS (Applicant Tracking System) resume is designed to pass automated screening software used by companies to filter job applications. With the rise of AI in recruitment, most resumes are first analyzed by machines before reaching a human recruiter.</p>
+
+        <h3>1. Why ATS is Important Today</h3>
+        <p>Companies receive thousands of applications, and AI-powered ATS systems help them shortlist candidates efficiently.</p>
+        <ul>
+            <li><strong>First Screening is Automated:</strong> Your resume must pass AI filters before a recruiter sees it.</li>
+            <li><strong>Keyword Matching:</strong> ATS scans for job-related keywords to rank candidates.</li>
+            <li><strong>Time Efficiency:</strong> Recruiters rely on ATS to quickly identify the best profiles.</li>
+            <li><strong>Fair Screening:</strong> AI ensures unbiased initial filtering based on skills and relevance.</li>
+        </ul>
+
+        <h3>2. Role of AI in Resume Selection</h3>
+        <p>AI has transformed hiring by making the process data-driven and precise.</p>
+        <ul>
+            <li><strong>Smart Parsing:</strong> AI reads and extracts data from resumes automatically.</li>
+            <li><strong>Ranking System:</strong> Candidates are ranked based on relevance and experience.</li>
+            <li><strong>Pattern Recognition:</strong> AI identifies skills, achievements, and job fit.</li>
+            <li><strong>Automation:</strong> Reduces manual effort and speeds up hiring decisions.</li>
+        </ul>
+
+        <h3>3. Key Features of an ATS-Friendly Resume</h3>
+        <p>To succeed in modern hiring, your resume must be optimized for ATS.</p>
+        <ul>
+            <li><strong>Simple Formatting:</strong> Avoid graphics, tables, and complex designs.</li>
+            <li><strong>Relevant Keywords:</strong> Use job-specific keywords naturally.</li>
+            <li><strong>Clear Headings:</strong> Use standard sections like Education, Skills, Experience.</li>
+            <li><strong>Readable Fonts:</strong> Use clean fonts like Arial or Calibri.</li>
+        </ul>
+
+        <h3>4. Common Mistakes to Avoid</h3>
+        <p>Even a strong resume can fail if it is not ATS-friendly.</p>
+        <ul>
+            <li><strong>Using Images or Icons:</strong> ATS cannot read visual elements.</li>
+            <li><strong>Complex Layouts:</strong> Multi-column designs confuse the system.</li>
+            <li><strong>Missing Keywords:</strong> Lack of keywords reduces ranking.</li>
+            <li><strong>Unclear Structure:</strong> Poor formatting leads to incorrect parsing.</li>
+        </ul>
+
+        <h3>5. ATS vs Traditional Resume</h3>
+        <ul>
+            <li><strong>ATS Resume:</strong> Focuses on keywords, simplicity, and machine readability.</li>
+            <li><strong>Traditional Resume:</strong> Focuses more on design and visual appeal.</li>
+            <li><strong>Best Approach:</strong> Combine ATS optimization with clean professional design.</li>
+        </ul>
+
+        <h3>6. Benefits of Using ATS Resume</h3>
+        <ul>
+            <li><strong>Higher Shortlisting Chances:</strong> Increases visibility to recruiters.</li>
+            <li><strong>Better Job Matching:</strong> Aligns your skills with job requirements.</li>
+            <li><strong>Faster Hiring Process:</strong> Gets your resume noticed quickly.</li>
+            <li><strong>Professional Impact:</strong> Shows you understand modern hiring trends.</li>
+        </ul>
+
+        <h3>7. AI Tips to Improve Your Resume</h3>
+        <ul>
+            <li><strong>Use Job Description:</strong> Extract keywords directly from job postings.</li>
+            <li><strong>Quantify Achievements:</strong> Add numbers and measurable results.</li>
+            <li><strong>Keep it Updated:</strong> Regularly update skills and experience.</li>
+            <li><strong>Test Your Resume:</strong> Use ATS checker tools for optimization.</li>
+        </ul>
+
+        <h3>8. Final Thoughts</h3>
+        <p>In today’s AI-driven hiring world, having an ATS-friendly resume is no longer optional—it’s essential. By optimizing your resume for both machines and humans, you significantly increase your chances of landing interviews and securing your dream job.</p>
+    `,
+    excerpt:
+      "Learn why ATS resumes are essential in the AI hiring era and how to optimize your resume for better job opportunities.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    author: "Abhishek",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "Career Growth",
+    readTime: "7 min read",
+    tags: [
+      "ATS Resume",
+      "AI Resume",
+      "Resume Tips",
+      "Career Growth",
+      "Job Preparation"
+    ],
+    likes: 0,
+    meta: {
+      title: "Why ATS Resume is Important | AI Resume Guide 2026",
+      description:
+        "Discover why ATS resumes are crucial in modern AI hiring systems and learn how to optimize your resume for better job selection chances.",
+      keywords:
+        "ATS resume, AI resume, resume optimization, ATS friendly resume, job resume tips",
+      ogImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: "Why ATS Resume is Important in the Age of AI",
+        author: {
+          "@type": "Person",
+          name: "Abhishek",
+        },
+        datePublished: "2026-01-01",
+        description:
+          "Learn the importance of ATS resumes and how AI impacts modern hiring processes.",
+        keywords:
+          "ATS resume, AI hiring, resume optimization",
+        articleSection: "Career Growth",
+        timeRequired: "PT7M",
+      },
+    },
+  }
 ];
 
 export default blogPosts;

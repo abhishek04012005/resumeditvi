@@ -65,6 +65,10 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ post: initialPost }) => {
       .slice(0, 3)
   );
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+
+  const duplicateFeaturedImage =
+    typeof post.image === "string" &&
+    post.content.includes(post.image);
   const [hasLiked, setHasLiked] = useState<boolean>(false);
 
   const handleLike = (): void => {
@@ -139,15 +143,17 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ post: initialPost }) => {
               </div>
             </div>
 
-            <div className={styles.blogdetailFeaturedImage}>
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={1200}
-                height={630}
-                priority
-              />
-            </div>
+            {!duplicateFeaturedImage && (
+              <div className={styles.blogdetailFeaturedImage}>
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  width={1200}
+                  height={630}
+                  priority
+                />
+              </div>
+            )}
 
             <div className={styles.blogdetailContent}>
               <div
