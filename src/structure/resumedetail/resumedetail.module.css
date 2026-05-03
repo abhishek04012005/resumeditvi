@@ -208,13 +208,16 @@
     min-width: 0;
 }
 
+.priceTop {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
 .priceRow {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5rem;
-    /* display: flex;
-    justify-content: space-between; */
-
+    gap: 1.5rem;
 }
 
 .priceBlock {
@@ -226,7 +229,7 @@
 
 .priceLabel {
     color: var(--text-secondary);
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
 }
@@ -239,9 +242,16 @@
 
 .priceFinal {
     color: var(--text-primary);
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-weight: 800;
     line-height: 1;
+}
+
+.priceNote {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .discountInfo {
@@ -254,9 +264,9 @@
 .discountTag {
     display: inline-flex;
     align-items: center;
-    padding: 0.7rem 1rem;
+    padding: 0.75rem 1rem;
     border-radius: 999px;
-    background: rgba(var(--primary-color-a), 0.14);
+    background: rgba(var(--primary-color-a), 0.16);
     color: var(--primary-color);
     font-weight: 700;
 }
@@ -859,9 +869,17 @@
         align-items: stretch;
     }
 
+    .priceTop {
+        grid-template-columns: 1fr;
+    }
+
     .offerBadge {
         width: 100%;
         justify-content: center;
+    }
+
+    .priceNote {
+        font-size: 0.9rem;
     }
 
     .radioGroup {

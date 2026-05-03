@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./resumedetail.module.css";
 import Background from "../background/Background";
-import { Description, ShoppingCart, CheckCircle } from "@mui/icons-material";
+import { Description, ShoppingCart, CheckCircle, WhatsApp, Phone } from "@mui/icons-material";
 import Container from "../container/Container";
 import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 import resumeDetails from "@/data/resume";
@@ -54,6 +54,9 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
   const totalPrice = resume.discountPrice;
   const discountAmount = resume.originalPrice - resume.discountPrice;
   const discountPercent = Math.round((discountAmount / resume.originalPrice) * 100);
+  const whatsappUrl = `https://wa.me/919285248504?text=${encodeURIComponent(
+    `Hello Ditvi Resume, I would like to know more about the ${resume.name} template.`
+  )}`;
 
   return (
     <Background>
@@ -97,13 +100,13 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
 
               <div className={styles.priceCard}>
                 <div className={styles.priceInfo}>
-                  <div className={styles.priceRow}>
+                  <div className={styles.priceTop}>
                     <div className={styles.priceBlock}>
-                      <span className={styles.priceLabel}>Original Price</span>
+                      <span className={styles.priceLabel}>Original</span>
                       <span className={styles.priceOriginal}>₹{resume.originalPrice}</span>
                     </div>
                     <div className={styles.priceBlock}>
-                      <span className={styles.priceLabel}>Offer Price</span>
+                      <span className={styles.priceLabel}>Now</span>
                       <span className={styles.priceFinal}>₹{totalPrice}</span>
                     </div>
                   </div>
@@ -111,8 +114,13 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
                     <span className={styles.discountTag}>Save ₹{discountAmount}</span>
                     <span className={styles.discountPercent}>{discountPercent}% OFF</span>
                   </div>
+                  <p className={styles.priceNote}>
+                    Limited-time offer — grab this professional resume at the best price.
+                  </p>
                 </div>
-             
+                <div className={styles.offerBadge}>
+                  Limited offer
+                </div>
               </div>
 
               <div className={styles.actions}>
@@ -121,15 +129,16 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
                   className={styles.actionButton}
                   onClick={() => setIsPopupOpen(true)}
                 >
-                  <ShoppingCart />
+                  <Phone />
                   Enquiry Now
                 </Button>
                 <Button
                   variant="secondary"
                   className={styles.secondaryButton}
-                  onClick={() => router.push("/resume")}
+                  onClick={() => window.open(whatsappUrl, "_blank")}
                 >
-                  View all templates
+                  <WhatsApp />
+                  WhatsApp us
                 </Button>
               </div>
             </div>

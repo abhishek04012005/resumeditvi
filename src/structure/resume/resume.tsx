@@ -8,8 +8,8 @@ import {
   ArrowForward,
   ArrowBack,
   Visibility,
-  ShoppingCart,
   EditDocument,
+  Phone
 } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import Image, { StaticImageData } from "next/image";
@@ -98,7 +98,7 @@ const BioDataCardStructure: React.FC<BioDataCardStructureProps> = ({
             variant="primary"
             onClick={onGetNow}
           >
-            <ShoppingCart />
+            <Phone />
             Enquiry Now
           </Button>
           <Button

@@ -58,6 +58,7 @@
 
 .icon {
   font-size: 1.5rem;
+  color: var(--primary-color);
 }
 
 .contactItem h3 {

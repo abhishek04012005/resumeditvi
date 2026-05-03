@@ -20,7 +20,6 @@ const footerQuickLinks: QuickLink[] = [
   { id: "how-we-work", label: "How We Work", path: "/how-we-work" },
   { id: "resume", label: "Resume", path: "/resume" },
   { id: "blog", label: "Blog", path: "/blog" },
-  { id: "article", label: "Article", path: "/articles" },
 ];
 
 const contactInfo: ContactInfo[] = [

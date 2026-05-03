@@ -7,6 +7,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 import Container from "@/structure/container/Container";
 import Background from "@/structure/background/Background";
 import Heading from "@/structure/heading/Heading";
@@ -36,12 +38,12 @@ const SOCIAL_LINKS = [
 
 const CONTACT_INFO = [
   {
-    icon: "📞",
+    icon: PhoneIcon,
     title: "Call Us",
     details: ["+91 9285248504"],
   },
   {
-    icon: "✉️",
+    icon: EmailIcon,
     title: "Email Us",
     details: ["care@ditvi.org"],
   },
@@ -59,17 +61,22 @@ const Contact = () => {
           <div className={styles.info}>
 
             <div className={styles.contactInfo}>
-              {CONTACT_INFO.map((info, index) => (
-                <div key={index} className={styles.contactItem}>
-                  <div className={styles.icon}>{info.icon}</div>
-                  <div>
-                    <h3>{info.title}</h3>
-                    {info.details.map((detail, i) => (
-                      <p key={i}>{detail}</p>
-                    ))}
+              {CONTACT_INFO.map((info, index) => {
+                const Icon = info.icon;
+                return (
+                  <div key={index} className={styles.contactItem}>
+                    <div className={styles.icon}>
+                      <Icon />
+                    </div>
+                    <div>
+                      <h3>{info.title}</h3>
+                      {info.details.map((detail, i) => (
+                        <p key={i}>{detail}</p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className={styles.social}>
