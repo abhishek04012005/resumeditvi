@@ -13,19 +13,21 @@ const resumeList: ResumeType[] = [
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
-    shortDescription: "An ATS-ready resume for professionals, especially medical and healthcare practitioners, with executive organization, strong achievement statements, and concise career highlights.",
-    longDescription: "Classic Resume is built for professionals who want a polished, recruiter-friendly profile. It emphasizes measurable results, career progression, and skill clusters so both hiring managers and applicant tracking systems can quickly identify your strengths. This format works well for doctors, healthcare administrators, and private-sector professionals seeking trusted presentation.",
+    shortDescription: "An ATS-ready classic resume template with professional presentation, recruiter-friendly sections, and clear career highlights for healthcare and business professionals.",
+    longDescription: "Classic Resume is built for professionals who want a polished, recruiter-friendly profile. It emphasizes measurable results, career progression, and keyword-rich skill clusters so both hiring managers and applicant tracking systems can quickly identify your strengths. Designed as a classic resume template, this format pairs strong achievement statements with a professional layout that works especially well for doctors, healthcare administrators, and corporate professionals seeking trusted presentation.",
     keyFeatures: [
       "Professional top-section summary with career objective",
       "Clear experience timeline with quantified outcomes",
       "Skills and certifications presented for quick scanning",
-      "Modern layout that balances white space and content density"
+      "Industry-specific sections for healthcare and administrative roles",
+      "Balanced layout that maximizes white space and readability"
     ],
     benefits: [
       "Improves discoverability in ATS keyword searches",
       "Highlights leadership and clinical achievements",
       "Makes career growth easy to read at a glance",
-      "Supports both private hospital and corporate healthcare roles"
+      "Supports private hospital, clinical, and corporate hiring",
+      "Positions your profile as professional and trustworthy"
     ],
     idealFor: [
       "Doctors and medical professionals",
@@ -60,19 +62,21 @@ const resumeList: ResumeType[] = [
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
-    shortDescription: "A structured resume for technical, engineering, or telecalling roles that showcases projects, education, and private-sector skills.",
-    longDescription: "Technical Resume is designed to present technical experience and industry-specific credentials clearly. It supports strong section hierarchy for engineering, telecalling, and private job applications so every detail is easy to scan and remember.",
+    shortDescription: "A structured technical resume template that showcases projects, certifications, education, and private-sector skills in a clean, ATS-aware design.",
+    longDescription: "Technical Resume is designed to present technical experience and industry-specific credentials clearly. It supports strong section hierarchy for engineering, telecalling, and private job applications, making every detail easy to scan and remember. This technical resume template emphasizes project results, tool expertise, and certification highlights so candidates can demonstrate both depth and relevance to recruiters.",
     keyFeatures: [
       "Project-focused sections with outcome-driven summaries",
       "Education and certification layout optimized for credibility",
       "Technical skills organized by competency areas",
-      "Compact profile section for fast recruiter review"
+      "Compact profile section for fast recruiter review",
+      "Clear technology stack and tools section for hiring managers"
     ],
     benefits: [
       "Communicates technical expertise effectively",
       "Highlights engineering projects and process improvements",
       "Organizes telecalling targets, customer handling, and sales skills",
-      "Makes resume screening efficient for private-sector jobs"
+      "Makes resume screening efficient for private-sector jobs",
+      "Improves clarity for role-specific technical and operations positions"
     ],
     idealFor: [
       "Engineering applicants",
@@ -107,19 +111,21 @@ const resumeList: ResumeType[] = [
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
-    shortDescription: "A high-impact resume template for experienced professionals, including engineering leads and private-sector managers, seeking roles with measurable success and leadership focus.",
-    longDescription: "Leadership Resume emphasizes impact statements and leadership contributions. The layout prioritizes role-based achievements, core expertise, and career growth to build a compelling narrative for senior hiring teams in engineering, private operations, and service businesses.",
+    shortDescription: "A high-impact leadership resume template built for experienced professionals and managers who need to present measurable success, strategic impact, and career progression.",
+    longDescription: "Leadership Resume emphasizes impact statements, leadership contributions, and career narrative. The layout prioritizes role-based achievements, core expertise, and growth milestones to build a compelling story for senior hiring teams in engineering, private operations, and service businesses. This template helps leaders articulate strategic value, team performance, and executive-level results with a polished, career-focused format.",
     keyFeatures: [
       "Leadership and achievement highlights prominently displayed",
       "Core competencies section tailored for senior roles",
       "Structured career history with outcome-focused bullets",
-      "Clean, professional design with strong visual hierarchy"
+      "Strong visual hierarchy for executive profiles",
+      "Strategic summary section that highlights leadership value"
     ],
     benefits: [
       "Projects confidence and credibility",
       "Shows career progression clearly",
       "Improves ATS matching with category-based skills",
-      "Positions experience for higher responsibility roles"
+      "Positions experience for higher responsibility roles",
+      "Highlights managerial success and team leadership"
     ],
     idealFor: [
       "Experienced engineering and operations professionals",
@@ -154,19 +160,21 @@ const resumeList: ResumeType[] = [
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
-    shortDescription: "A visually clean and modern resume for candidates in private jobs like telecalling, sales, engineering, and customer-facing roles who want polished presentation.",
-    longDescription: "Modern Resume is built with readability and clarity in mind. It balances profile, accomplishments, and skills so that hiring managers can quickly understand your story, strengths, and fit for roles such as telecalling, private-sector sales, or technical engineering positions.",
+    shortDescription: "A visually clean modern resume template for telecalling, sales, engineering, and customer-facing roles with polished presentation and strong readability.",
+    longDescription: "Modern Resume is built with readability and clarity in mind. It balances profile, accomplishments, and skills so that hiring managers can quickly understand your story, strengths, and fit for roles such as telecalling, private-sector sales, or technical engineering positions. This contemporary resume template combines smart spacing, bold headings, and a modern visual hierarchy to keep your experience looking current, professional, and easy to digest.",
     keyFeatures: [
       "Modern layout with smart section spacing",
       "Professional summary that leads with value",
       "Skill clusters grouped by relevance",
-      "Readable bullets with achievement focus"
+      "Readable bullets with achievement focus",
+      "Contemporary design with accent styling and easy scanning"
     ],
     benefits: [
       "Creates a strong first impression",
       "Makes your profile easy to evaluate",
       "Helps recruiters scan key information fast",
-      "Supports both corporate and private-sector roles"
+      "Supports both corporate and private-sector roles",
+      "Presents a polished resume for modern hiring needs"
     ],
     idealFor: [
       "Telecalling and customer-facing professionals",

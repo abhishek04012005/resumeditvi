@@ -19,20 +19,21 @@ const whyUsData: WhyUsItem[] = [
   },
   {
     id: 2,
-    title: "Cultural Touch",
+    title: "ATS Optimized",
     description:
-      "Preserving traditional values with modern presentation styles",
-    icon: "🏛️",
+      "Designed to pass Applicant Tracking Systems and reach recruiters faster",
+    icon: "📊",
     hoverBg: "#0062ff2a",
     animationDelay: "0.2s",
   },
   {
     id: 3,
-    title: "Quick Delivery",
-    description: "Fast turnaround time without compromising on quality",
-    icon: "⚡",
+    title: "Fresher Friendly",
+    description:
+      "Perfectly structured templates for students and first-time job seekers",
+    icon: "🎓",
     hoverBg: "#0062ff2a",
-    animationDelay: "0.4s",
+    animationDelay: "1.2s",
   },
   {
     id: 4,

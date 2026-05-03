@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
 
               <h1 className={styles.heroLeftTextHeading}>
                 <span className={styles.highlight}>GET YOUR ATS</span>{" "}
-                OPTIMIZED & AI SUGGESTED 
+                OPTIMIZED & AI SUGGESTED
                 <span className={styles.gradientText}> RESUME</span> FROM
                 EXPERTS.
               </h1>
@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
                 <Button
                   className={styles.heroButton}
                   variant="secondary"
-                  onClick={() => router.push("/whyus")}
+                  onClick={() => router.push("/why-us")}
                 >
                   Learn More
                 </Button>
@@ -158,10 +158,10 @@ const Hero: React.FC = () => {
               </Slider>
 
               {[
-                { text: "✨ Premium Templates", class: styles.card1 },
-                { text: "✨ Traditional Resume", class: styles.card4 },
-                { text: "🎯 100% Satisfaction", class: styles.card2 },
-                { text: "🚀 Quick Delivery", class: styles.card3 },
+                { text: "📄 Professional Designs", class: styles.card1 },
+                { text: "✨ ATS Friendly Resume", class: styles.card4 },
+                { text: "💼 Perfect for All Jobs", class: styles.card2 },
+                { text: "🏆 Stand Out from Crowd", class: styles.card3 },
               ].map((card, index) => (
                 <div
                   key={index}

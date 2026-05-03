@@ -8,15 +8,17 @@ import { Description, ShoppingCart, CheckCircle } from "@mui/icons-material";
 import Container from "../container/Container";
 import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 import resumeDetails from "@/data/resume";
+import { SeoData } from "@/data/seo";
 import Button from "../button/Button";
 import Image from "next/image";
 import { ResumeType } from "@/types/types";
 
 interface ResumeDetailProps {
   overrideSlug?: string;
+  seoData?: SeoData;
 }
 
-const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug }) => {
+const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) => {
   const router = useRouter();
   const params = useParams<{ category?: string; resumeId?: string; slug?: string }>();
   const resumeId = params.resumeId;
@@ -29,6 +31,9 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug }) => {
   const resume = resumeDetails.find(
     (item) => item.slug === actualCategory
   ) as ResumeType | undefined;
+
+  const pageTitle = seoData?.title.split("|")[0].trim() || resume?.name || "Resume Template";
+  const pageDescription = seoData?.description || resume?.shortDescription || "Professional resume template details.";
 
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
   const [selectedModel, setSelectedModel] = useState<string>("");
@@ -55,7 +60,8 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug }) => {
           <div className={styles.header}>
             <div>
               <p className={styles.subTitle}>Resume details</p>
-              <h1 className={styles.title}>{resume.name}</h1>
+              <h1 className={styles.title}>{pageTitle}</h1>
+              <p className={styles.pageDescription}>{pageDescription}</p>
             </div>
             <Button variant="secondary" onClick={() => router.push("/resume")}> 
               Back to templates
