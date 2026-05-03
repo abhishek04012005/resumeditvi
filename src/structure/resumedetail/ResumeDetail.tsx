@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./resumedetail.module.css";
 import Background from "../background/Background";
-import { Description, ShoppingCart, CheckCircle, WhatsApp, Phone } from "@mui/icons-material";
+import { Description, CheckCircle, WhatsApp, Phone } from "@mui/icons-material";
 import Container from "../container/Container";
 import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 import resumeDetails from "@/data/resume";

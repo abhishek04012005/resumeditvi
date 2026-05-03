@@ -5,13 +5,20 @@ import { getResumeDetailMetadata } from "@/lib/seo";
 import { resumeSeoData } from "@/data/seo";
 
 interface ResumePageProps {
-  params: {
+  params: Promise<{
     resumeId: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: ResumePageProps): Promise<Metadata> {
-  const resume = resumeList.find((item) => item.slug === params.resumeId);
+// ✅ Metadata
+export async function generateMetadata(
+  { params }: ResumePageProps
+): Promise<Metadata> {
+  const { resumeId } = await params;
+
+  const resume = resumeList.find(
+    (item) => item.slug === resumeId
+  );
 
   if (!resume) {
     return {
@@ -44,8 +51,16 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   });
 }
 
-export default function ResumePage({ params }: ResumePageProps) {
-  const resume = resumeList.find((item) => item.slug === params.resumeId);
+// ✅ Page Component
+export default async function ResumePage(
+  { params }: ResumePageProps
+) {
+  const { resumeId } = await params;
+
+  const resume = resumeList.find(
+    (item) => item.slug === resumeId
+  );
+
   const seoData = resume
     ? Object.values(resumeSeoData).find(
         (item) => item.path.split("/")[2] === resume.slug
