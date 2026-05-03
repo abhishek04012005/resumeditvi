@@ -52,6 +52,8 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
   }
 
   const totalPrice = resume.discountPrice;
+  const discountAmount = resume.originalPrice - resume.discountPrice;
+  const discountPercent = Math.round((discountAmount / resume.originalPrice) * 100);
 
   return (
     <Background>
@@ -94,17 +96,23 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
               </div>
 
               <div className={styles.priceCard}>
-                <div>
-                  <div className={styles.priceOriginal}>
-                    <span className={styles.priceLabel}>Original</span>
-                    <span className={styles.priceValue}>₹{resume.originalPrice}</span>
+                <div className={styles.priceInfo}>
+                  <div className={styles.priceRow}>
+                    <div className={styles.priceBlock}>
+                      <span className={styles.priceLabel}>Original Price</span>
+                      <span className={styles.priceOriginal}>₹{resume.originalPrice}</span>
+                    </div>
+                    <div className={styles.priceBlock}>
+                      <span className={styles.priceLabel}>Offer Price</span>
+                      <span className={styles.priceFinal}>₹{totalPrice}</span>
+                    </div>
                   </div>
-                  <div className={styles.priceFinal}>
-                    <span className={styles.priceLabel}>Offer Price</span>
-                    <span className={styles.priceValue}>₹{totalPrice}</span>
+                  <div className={styles.discountInfo}>
+                    <span className={styles.discountTag}>Save ₹{discountAmount}</span>
+                    <span className={styles.discountPercent}>{discountPercent}% OFF</span>
                   </div>
                 </div>
-                <div className={styles.priceTag}>Save ₹{resume.originalPrice - resume.discountPrice}</div>
+             
               </div>
 
               <div className={styles.actions}>
