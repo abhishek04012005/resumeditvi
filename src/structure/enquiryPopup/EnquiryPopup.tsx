@@ -178,13 +178,18 @@ const EnquiryPopup: React.FC<EnquiryPopupProps> = ({
           <p>{paragraph}</p>
         </div>
         {success ? (
-          <div className={styles.successContent}>
+          <div className={styles.successContent} role="status" aria-live="polite">
             <div className={styles.successIcon}>✓</div>
-            <h3 className={styles.successTitle}>Success!</h3>
+            <h3 className={styles.successTitle}>Request Submitted</h3>
             <p className={styles.successText}>
-              Your enquiry has been submitted successfully. We will contact you soon.
+              Thank you! Your enquiry has been received successfully. Our team will contact you shortly.
             </p>
-            <Button type="button" variant="primary" onClick={handleSuccessClose}>
+            <Button
+              type="button"
+              variant="primary"
+              className={styles.successButton}
+              onClick={handleSuccessClose}
+            >
               Close
             </Button>
           </div>
