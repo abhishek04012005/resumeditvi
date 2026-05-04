@@ -26,8 +26,8 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
   const actualCategory = overrideSlug
     ? overrideSlug
     : resumeId
-    ? resumeId.replace(/^resume(\d+)$/, "resume-$1")
-    : category;
+      ? resumeId.replace(/^resume(\d+)$/, "resume-$1")
+      : category;
   const resume = resumeDetails.find(
     (item) => item.slug === actualCategory
   ) as ResumeType | undefined;
@@ -84,7 +84,7 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
               <h1 className={styles.title}>{pageTitle}</h1>
               <p className={styles.pageDescription}>{pageDescription}</p>
             </div>
-            <Button variant="secondary" onClick={() => router.push("/resume")}> 
+            <Button variant="secondary" onClick={() => router.push("/resume")}>
               Back to templates
             </Button>
           </div>
