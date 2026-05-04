@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./resumedetail.module.css";
 import Background from "../background/Background";
-import { Description, CheckCircle, WhatsApp, Phone } from "@mui/icons-material";
+import { Description, CheckCircle, WhatsApp, Phone, Download } from "@mui/icons-material";
 import Container from "../container/Container";
 import EnquiryPopup from "../enquiryPopup/EnquiryPopup";
 import resumeDetails from "@/data/resume";
@@ -38,6 +38,22 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleDownloadResume = () => {
+    if (!resume) return;
+
+    const downloadUrl =
+      typeof resume.image === "string" ? resume.image : resume.image.src;
+
+    const anchor = document.createElement("a");
+    anchor.href = downloadUrl;
+    anchor.download = `${resume.slug}.png`;
+    anchor.target = "_blank";
+    anchor.rel = "noreferrer";
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  };
 
   useEffect(() => {
     if (!resume) {
@@ -131,6 +147,14 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
                 >
                   <Phone />
                   Enquiry Now
+                </Button>
+                <Button
+                  variant="secondary"
+                  className={styles.secondaryButton}
+                  onClick={handleDownloadResume}
+                >
+                  <Download />
+                  Download Resume
                 </Button>
                 <Button
                   variant="secondary"
