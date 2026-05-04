@@ -38,7 +38,7 @@ const contactInfo: ContactInfo[] = [
   {
     id: "location",
     icon: LocationOn,
-    content: "Thane, Maharashtra, India",
+    content: "Patna, Bihar, 800001",
     isText: true,
   },
 ];
