@@ -6,7 +6,7 @@ const Resume: React.FC = (): JSX.Element => {
   return (
     <div className="resume">
       <ResumeCard
-        title="Traditional Resume Templates"
+        title="Professional Resume Templates"
         subtitle="Professionally structured resume templates for modern career presentation"
         resumeDetails={resumeList}
         isSlider={true}

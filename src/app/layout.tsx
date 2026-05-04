@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Ditvi Resume | AI ATS-Friendly Resume Builder, Professional CV & Marriage Biodata Templates",
   
   description:
-    "Create AI-powered ATS-friendly resumes, professional CVs, traditional marriage biodata, and college resumes. Build, customize, and download job-winning resumes instantly with Ditvi Resume.",
+    "Create AI-powered ATS-friendly resumes, professional CVs, professional marriage biodata, and college resumes. Build, customize, and download job-winning resumes instantly with Ditvi Resume.",
   
   metadataBase: new URL(baseUrl),
 
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "resume maker online free",
     "professional CV templates",
     "modern resume templates",
-    "traditional resume India",
+    "professional resume India",
     "marriage biodata maker",
     "biodata for marriage format",
     "college resume for students",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title:
       "AI Resume Builder | ATS-Friendly CV, Marriage Biodata & Professional Templates",
     description:
-      "Build job-winning ATS resumes, professional CVs, and traditional marriage biodata with AI. Fast, customizable, and recruiter-approved templates.",
+      "Build job-winning ATS resumes, professional CVs, and professional marriage biodata with AI. Fast, customizable, and recruiter-approved templates.",
     type: "website",
     url: baseUrl,
     siteName: "Ditvi Resume",

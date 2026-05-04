@@ -336,6 +336,17 @@ const ResumeDetail: React.FC<ResumeDetailProps> = ({ overrideSlug, seoData }) =>
                 </div>
               </div>
             </div>
+
+            <div className={styles.hashtagsSection}>
+              <h3>Related Tags</h3>
+              <div className={styles.hashtagsContainer}>
+                {resume.tags.map((tag, index) => (
+                  <span key={index} className={styles.hashtag}>
+                    #{tag.replace(/\s+/g, "")}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </Container>

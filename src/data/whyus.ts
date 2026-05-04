@@ -12,7 +12,7 @@ const whyUsData: WhyUsItem[] = [
     id: 1,
     title: "Professional Design",
     description:
-      "Expertly crafted traditional resume designs that leave a lasting impression",
+      "Expertly crafted professional resume designs that leave a lasting impression",
     icon: "🎨",
     hoverBg: "#0062ff2a",
     animationDelay: "0s",

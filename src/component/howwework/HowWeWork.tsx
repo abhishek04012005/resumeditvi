@@ -42,7 +42,7 @@ const HowWeWork: React.FC = () => {
         <Container>
           <Heading
             title="How We work"
-            subtitle="Simple steps to get your traditional resume"
+            subtitle="Simple steps to get your professional resume"
           />
 
           <div className={styles.processTimeline}>

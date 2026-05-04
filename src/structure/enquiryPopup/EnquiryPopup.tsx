@@ -173,10 +173,12 @@ const EnquiryPopup: React.FC<EnquiryPopupProps> = ({
         >
           &times;
         </button>
-        <div className={styles.getnowHeader}>
-          <h2>{heading}</h2>
-          <p>{paragraph}</p>
-        </div>
+        {!success && (
+          <div className={styles.getnowHeader}>
+            <h2>{heading}</h2>
+            <p>{paragraph}</p>
+          </div>
+        )}
         {success ? (
           <div className={styles.successContent} role="status" aria-live="polite">
             <div className={styles.successIcon}>✓</div>

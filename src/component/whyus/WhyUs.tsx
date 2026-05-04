@@ -30,7 +30,7 @@ const WhyUs: React.FC = () => {
             <Container>
               <Heading
                 title="Why Us?"
-                subtitle="Create lasting impressions with our expertly crafted traditional resume designs"
+                subtitle="Create lasting impressions with our expertly crafted professional resume designs"
               />
 
               <div className={styles.whyusInner}>

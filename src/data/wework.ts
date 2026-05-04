@@ -12,7 +12,7 @@ const weWork: WorkStep[] = [
     steps: [
       "Select a design which you like, click on 'Get Now' button.",
       "Fill your Name, WhatsApp Number and submit it.",
-      "Choose your preferred method: Share via WhatsApp, Upload Existing Resume, or Create new Resume.",
+      "Pay 50% to start."
     ],
     icon: "🎨",
   },
@@ -20,7 +20,7 @@ const weWork: WorkStep[] = [
     number: 2,
     title: "Review & Approve",
     steps: [
-      "You will receive customized traditional resume with watermark.",
+      "You will receive customized professional resume with watermark.",
       "Review the resume carefully, If you want to make any changes, reply with your feedback.",
       "Ensure you are satisfied with resume.",
     ],
@@ -31,7 +31,7 @@ const weWork: WorkStep[] = [
     title: "Pay & Download",
     steps: [
       `Text us, "I am satisfied".`,
-      "We will send you a payment link.",
+      "We will send you a payment link for remaining 50%.",
       "After successful payment, you will receive your resume without watermark.",
     ],
     icon: "🚀",

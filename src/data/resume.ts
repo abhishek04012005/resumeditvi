@@ -1,15 +1,15 @@
 import { ResumeType } from "../types/types";
-import Resume1111Image from "../assets/resume/1111.png";
-import Resume1112Image from "../assets/resume/1112.png";
-import Resume1113Image from "../assets/resume/1113.png";
-import Resume1114Image from "../assets/resume/1114.png";
+import ClassicResumeImage from "../assets/resume/classicresume.png";
+import TechnicalResumeImage from "../assets/resume/technicalresume.png";
+import LeadershipResumeImage from "../assets/resume/leadershipresume.png";
+import ModernResumeImage from "../assets/resume/modernresume.png";
 
 const resumeList: ResumeType[] = [
   {
     id: 1,
     slug: "classic-resume",
     name: "Classic Resume",
-    image: Resume1111Image,
+    image: ClassicResumeImage,
     type: "resume",
     originalPrice: 499,
     discountPrice: 99,
@@ -40,7 +40,7 @@ const resumeList: ResumeType[] = [
       "Well-defined skills section for recruiters",
       "Balanced page layout with emphasis on readability"
     ],
-    tags: ["ATS-friendly", "Healthcare", "Doctor resume", "Private sector"],
+    tags: ["ATS-friendly", "Healthcare", "Doctor resume", "Medical professional", "Physician CV", "Clinical resume", "Doctor CV", "Private sector", "Medical CV", "Healthcare CV"],
     do: [
       "Use clear clinical or professional accomplishments",
       "List certifications, specializations, and practice areas",
@@ -58,7 +58,7 @@ const resumeList: ResumeType[] = [
     id: 2,
     slug: "technical-resume",
     name: "Technical Resume",
-    image: Resume1112Image,
+    image: TechnicalResumeImage,
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
@@ -107,7 +107,7 @@ const resumeList: ResumeType[] = [
     id: 3,
     slug: "leadership-resume",
     name: "Leadership Resume",
-    image: Resume1113Image,
+    image: LeadershipResumeImage,
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,
@@ -156,7 +156,7 @@ const resumeList: ResumeType[] = [
     id: 4,
     slug: "modern-resume",
     name: "Modern Resume",
-    image: Resume1114Image,
+    image: ModernResumeImage,
     type: "resume",
     originalPrice: 201,
     discountPrice: 101,

@@ -3,9 +3,9 @@
 import React from "react";
 import Slider from "react-slick";
 import "../../styles/slick-carousel.css";
-import Carousel1 from "../../assets/resume/1111.png";
-import Carousel2 from "../../assets/resume/1112.png";
-import Carousel3 from "../../assets/resume/1113.png";
+import Carousel1 from "../../assets/resume/classicresume.png";
+import Carousel2 from "../../assets/resume/modernresume.png";
+import Carousel3 from "../../assets/resume/technicalresume.png";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -103,11 +103,14 @@ const Hero: React.FC = () => {
                 <span className={styles.gradientText}> RESUME</span> FROM
                 EXPERTS.
               </h1>
+              <div className={styles.heroLeftTextSubheadingWrapper}>
+                <h2 className={styles.heroLeftTextSubheading}>
+                  NO RISK, FULL TRANSPARENCY.
+                </h2>
+                <p>
+                  Pay 50% to start. Preview with watermark. Pay remaining 50% after approval for final.</p>
+              </div>
 
-              <h2 className={styles.heroLeftTextSubheading}>
-                YOUR SATISFACTION COMES FIRST, PAY US ONLY WHEN YOU&apos;RE
-                HAPPY.
-              </h2>
 
               <div className={styles.heroButtons}>
                 <Button
@@ -128,7 +131,7 @@ const Hero: React.FC = () => {
 
               <div className={styles.heroStats}>
                 {[
-                  { number: "100+", label: "Happy Clients" },
+                  { number: "10K+", label: "Happy Clients" },
                   { number: "100%", label: "Satisfaction" },
                   { number: "24 X 7", label: "Customer Support" },
                 ].map((stat, index) => (

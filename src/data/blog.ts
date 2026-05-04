@@ -39,13 +39,13 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "Crafting Your Perfect Traditional Resume: Tips and Tricks",
+    title: "Crafting Your Perfect Professional Resume: Tips and Tricks",
     content: `
             <h2>Why a Well-Crafted Resume Matters</h2>
-            <p>A traditional resume is more than a simple list of facts. It is the first window into your life for families, institutions, or employers who may read it with a wide range of expectations. The stronger your resume, the more clearly your values, qualifications, and ambitions are communicated.</p>
+            <p>A professional resume is more than a simple list of facts. It is the first window into your life for families, institutions, or employers who may read it with a wide range of expectations. The stronger your resume, the more clearly your values, qualifications, and ambitions are communicated.</p>
 
             <h3>1. The Resume as a Personal Biography</h3>
-            <p>When written well, a traditional resume reads like a compact biography. It should tell the story of where you come from, what you have achieved, and where you want to go next.</p>
+            <p>When written well, a professional resume reads like a compact biography. It should tell the story of where you come from, what you have achieved, and where you want to go next.</p>
             <ul>
                 <li><strong>Personal details:</strong> Provide accurate names, contact information, and a small professional photograph if needed.</li>
                 <li><strong>Education and qualifications:</strong> Outline your academic journey, from board exams to higher education and certifications.</li>
@@ -55,7 +55,7 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>2. Building the Foundation</h3>
-            <p>The foundation of an effective traditional resume lies in structure and clarity. Each section should be easy to scan and provide meaningful detail.</p>
+            <p>The foundation of an effective professional resume lies in structure and clarity. Each section should be easy to scan and provide meaningful detail.</p>
             <ol>
                 <li><strong>Header:</strong> Name, contact details, and a short objective or summary.</li>
                 <li><strong>Personal information:</strong> Your age, location, family status, and any cultural details that help explain your background.</li>
@@ -94,7 +94,7 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>6. Personal and Cultural Context</h3>
-            <p>Especially in traditional resumes, cultural and family context can support your story.</p>
+            <p>Especially in professional resumes, cultural and family context can support your story.</p>
             <ul>
                 <li><strong>Family values:</strong> Mention the values taught in your home, such as respect, hard work, and honesty.</li>
                 <li><strong>Cultural traditions:</strong> Note any important customs or community roles if they shape your identity.</li>
@@ -130,13 +130,13 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>10. Bringing It All Together</h3>
-            <p>A thorough traditional resume is a balance of strong detail, clean structure, and sincere presentation. Take the time to create a document that feels complete, accurate, and reflective of your profile.</p>
+            <p>A thorough professional resume is a balance of strong detail, clean structure, and sincere presentation. Take the time to create a document that feels complete, accurate, and reflective of your profile.</p>
 
             <h3>11. Final Thoughts</h3>
             <p>A longer blog-style resume is not simply wordy—it is deliberate. Your goal is to provide a full, compelling portrait that readers can trust. With thoughtful organization, concrete examples, and polished formatting, you can create a resume that conveys both credibility and character.</p>
         `,
     excerpt:
-      "Learn the key components that make a traditional resume compelling and impactful.",
+      "Learn the key components that make a professional resume compelling and impactful.",
     image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toLocaleDateString(
@@ -148,34 +148,34 @@ const blogPosts: BlogPost[] = [
       }
     ),
     category: "Professional Development",
-    readTime: "30 min read",
+    readTime: "2 min read",
     tags: [
-      "Traditional Resume",
+      "Professional Resume",
       "Resume Tips",
       "Professional Profile",
       "Matrimonial Resume",
     ],
     likes: 15,
     meta: {
-      title: "I am to Create Perfect Traditional Resume | Expert Tips & Tricks",
+      title: "I am to Create Perfect Professional Resume | Expert Tips & Tricks",
       description:
-        "Learn expert tips and tricks for creating a perfect traditional resume. Get insights on formatting, content structure, and best practices.",
+        "Learn expert tips and tricks for creating a perfect professional resume. Get insights on formatting, content structure, and best practices.",
       keywords:
-        "traditional resume tips, resume creation guide, perfect resume format, marriage resume tips",
+        "professional resume tips, resume creation guide, perfect resume format, marriage resume tips",
       ogImage: "https://your-domain.com/blog/perfect-resume-tips.jpg",
       schema: {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: "Crafting Your Perfect Traditional Resume: Tips and Tricks",
+        headline: "Crafting Your Perfect Professional Resume: Tips and Tricks",
         author: {
           "@type": "Person",
           name: "Abhishek",
         },
         datePublished: "2024-01-15",
         description:
-          "Learn expert tips for crafting an effective traditional resume to make the best impression.",
+          "Learn expert tips for crafting an effective professional resume to make the best impression.",
         keywords:
-          "traditional resume tips, resume creation, marriage resume",
+          "professional resume tips, resume creation, marriage resume",
         articleSection: "Personal Development",
         timeRequired: "PT30M",
       },
@@ -183,10 +183,10 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    title: "The Essential Elements of a Compelling Traditional Resume",
+    title: "The Essential Elements of a Compelling Professional Resume",
     content: `
             <h2>Why a Well-Crafted Resume Matters</h2>
-            <p>A traditional resume is far more than a static record of experience. It is a narrative that presents your life context, professional accomplishments, and personal values in a way that can appeal to families, employers, or institutions.</p>
+            <p>A professional resume is far more than a static record of experience. It is a narrative that presents your life context, professional accomplishments, and personal values in a way that can appeal to families, employers, or institutions.</p>
 
             <h3>1. Start with a Clear Purpose</h3>
             <p>Every strong resume begins with a clear purpose. Ask yourself who will read it and what they need to learn about you.</p>
@@ -218,7 +218,7 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>4. Expand Your Education Section</h3>
-            <p>Education is often a central theme in traditional resumes. Include details that show your academic journey and excellence.</p>
+            <p>Education is often a central theme in professional resumes. Include details that show your academic journey and excellence.</p>
             <ul>
                 <li><strong>Institutions and boards:</strong> Mention where you studied and under which board or university.</li>
                 <li><strong>Results and grades:</strong> Provide percentages, grades, or ranks if they are noteworthy.</li>
@@ -234,7 +234,7 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>6. Add Depth to Personal and Family Details</h3>
-            <p>In a traditional resume, personal background matters. Present it respectfully and informatively.</p>
+            <p>In a professional resume, personal background matters. Present it respectfully and informatively.</p>
             <ul>
                 <li><strong>Family structure:</strong> Explain who lives in your family and their occupations.</li>
                 <li><strong>Family values:</strong> Mention traditions, religious beliefs, and lifestyle choices.</li>
@@ -274,10 +274,10 @@ const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>11. Final Thoughts</h3>
-            <p>A detailed traditional resume is powerful when it is thorough, honest, and well organized. By providing complete context, meaningful examples, and thoughtful structure, you can create a resume that earns trust and leaves a strong impression.</p>
+            <p>A detailed professional resume is powerful when it is thorough, honest, and well organized. By providing complete context, meaningful examples, and thoughtful structure, you can create a resume that earns trust and leaves a strong impression.</p>
         `,
     excerpt:
-      "Learn the key components that make a traditional resume compelling and impactful.",
+      "Learn the key components that make a professional resume compelling and impactful.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
@@ -286,28 +286,28 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Personal Development",
-    readTime: "35 min read",
-    tags: ["Traditional Resume", "Resume Tips", "Professional Profile"],
+    readTime: "3 min read",
+    tags: ["Professional Resume", "Resume Tips", "Professional Profile"],
     likes: 10,
     meta: {
-      title: "How to Create Perfect Traditional Resume | Expert Tips & Tricks",
+      title: "How to Create Perfect Professional Resume | Expert Tips & Tricks",
       description:
-        "Learn expert tips and tricks for creating a perfect traditional resume. Get insights on formatting, content structure, and best practices.",
+        "Learn expert tips and tricks for creating a perfect professional resume. Get insights on formatting, content structure, and best practices.",
       keywords:
-        "traditional resume tips, resume creation guide, perfect resume format, marriage resume tips",
+        "professional resume tips, resume creation guide, perfect resume format, marriage resume tips",
       ogImage: "https://your-domain.com/blog/perfect-resume-tips.jpg",
       schema: {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: "Crafting Your Perfect Traditional Resume: Tips and Tricks",
+        headline: "Crafting Your Perfect Professional Resume: Tips and Tricks",
         author: {
           "@type": "Person",
           name: "Abhishek",
         },
         datePublished: "2024-01-15",
         description:
-          "Learn expert tips for crafting an effective traditional resume to make the best impression.",
-        keywords: "traditional resume tips, resume creation, marriage resume",
+          "Learn expert tips for crafting an effective professional resume to make the best impression.",
+        keywords: "professional resume tips, resume creation, marriage resume",
         articleSection: "Personal Development",
         timeRequired: "PT35M",
       },
@@ -419,34 +419,34 @@ const blogPosts: BlogPost[] = [
       }
     ),
     category: "Marriage & Relationships",
-    readTime: "40 min read",
+    readTime: "2 min read",
     tags: [
       "Marriage Resume",
-      "Traditional Resume",
+      "Professional Resume",
       "Finding a Match",
       "Personal Profile",
     ],
     likes: 20,
     meta: {
-      title: "I am to Create Perfect Traditional Resume | Expert Tips & Tricks",
+      title: "I am to Create Perfect Professional Resume | Expert Tips & Tricks",
       description:
-        "Learn expert tips and tricks for creating a perfect traditional resume. Get insights on formatting, content structure, and best practices.",
+        "Learn expert tips and tricks for creating a perfect professional resume. Get insights on formatting, content structure, and best practices.",
       keywords:
-        "traditional resume tips, resume creation guide, perfect resume format, marriage resume tips",
+        "professional resume tips, resume creation guide, perfect resume format, marriage resume tips",
       ogImage: "https://your-domain.com/blog/perfect-resume-tips.jpg",
       schema: {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: "Crafting Your Perfect Traditional Resume: Tips and Tricks",
+        headline: "Crafting Your Perfect Professional Resume: Tips and Tricks",
         author: {
           "@type": "Person",
           name: "Abhishek",
         },
         datePublished: "2024-01-15",
         description:
-          "Learn expert tips for crafting an effective traditional resume to make the best impression.",
+          "Learn expert tips for crafting an effective professional resume to make the best impression.",
         keywords:
-          "traditional resume tips, resume creation, marriage resume",
+          "professional resume tips, resume creation, marriage resume",
         articleSection: "Personal Development",
         timeRequired: "PT40M",
       },
@@ -454,12 +454,12 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 4,
-    title: "Making a Lasting Impression: Traditional Resume Do's and Don'ts",
+    title: "Making a Lasting Impression: Professional Resume Do's and Don'ts",
     content: `
             <h2>Why Your Resume Matters</h2>
-            <p>A traditional resume is your personal introduction in written form. It should convey your credibility, values, and readiness for the next chapter. The right balance of detail and clarity will make a strong, lasting impression.</p>
+            <p>A professional resume is your personal introduction in written form. It should convey your credibility, values, and readiness for the next chapter. The right balance of detail and clarity will make a strong, lasting impression.</p>
     
-            <h3>1. The Do's of Writing a Traditional Resume</h3>
+            <h3>1. The Do's of Writing a Professional Resume</h3>
             <p>These guidelines help make your resume both professional and compelling.</p>
             <ul>
                 <li><strong>Keep It Concise:</strong> Focus on relevant facts and avoid repetition. A long resume is acceptable only if each part adds clear value.</li>
@@ -536,7 +536,7 @@ const blogPosts: BlogPost[] = [
             <p>Creating a resume that follows the right do's and avoids the common don'ts makes your story stronger. Thoughtful content, clean formatting, and honest expression help your resume feel both professional and trustworthy.</p>
         `,
     excerpt:
-      "Discover key do's and don'ts to craft a traditional resume that makes a lasting impression.",
+      "Discover key do's and don'ts to craft a professional resume that makes a lasting impression.",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
     author: "Abhishek",
     date: new Date(Date.now() - 39 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
@@ -545,34 +545,34 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Personal Development",
-    readTime: "32 min read",
+    readTime: "3 min read",
     tags: [
-      "Traditional Resume",
+      "Professional Resume",
       "Resume Tips",
       "Matrimonial Resume",
       "Professional Profile",
     ],
     likes: 18,
     meta: {
-      title: "I am to Create Perfect Traditional Resume | Expert Tips & Tricks",
+      title: "I am to Create Perfect Professional Resume | Expert Tips & Tricks",
       description:
-        "Learn expert tips and tricks for creating a perfect traditional resume. Get insights on formatting, content structure, and best practices.",
+        "Learn expert tips and tricks for creating a perfect professional resume. Get insights on formatting, content structure, and best practices.",
       keywords:
-        "traditional resume tips, resume creation guide, perfect resume format, marriage resume tips",
+        "professional resume tips, resume creation guide, perfect resume format, marriage resume tips",
       ogImage: "https://your-domain.com/blog/perfect-resume-tips.jpg",
       schema: {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: "Crafting Your Perfect Traditional Resume: Tips and Tricks",
+        headline: "Crafting Your Perfect Professional Resume: Tips and Tricks",
         author: {
           "@type": "Person",
           name: "Abhishek",
         },
         datePublished: "2024-01-15",
         description:
-          "Learn expert tips for crafting an effective traditional resume to make the best impression.",
+          "Learn expert tips for crafting an effective professional resume to make the best impression.",
         keywords:
-          "traditional resume tips, resume creation, marriage resume",
+          "professional resume tips, resume creation, marriage resume",
         articleSection: "Personal Development",
         timeRequired: "PT32M",
       },
@@ -623,10 +623,10 @@ const blogPosts: BlogPost[] = [
             <li><strong>Unclear Structure:</strong> Poor formatting leads to incorrect parsing.</li>
         </ul>
 
-        <h3>5. ATS vs Traditional Resume</h3>
+        <h3>5. ATS vs Professional Resume</h3>
         <ul>
             <li><strong>ATS Resume:</strong> Focuses on keywords, simplicity, and machine readability.</li>
-            <li><strong>Traditional Resume:</strong> Focuses more on design and visual appeal.</li>
+            <li><strong>Professional Resume:</strong> Focuses more on design and visual appeal.</li>
             <li><strong>Best Approach:</strong> Combine ATS optimization with clean professional design.</li>
         </ul>
 
@@ -659,7 +659,7 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Career Growth",
-    readTime: "7 min read",
+    readTime: "2 min read",
     tags: [
       "ATS Resume",
       "AI Resume",
@@ -773,7 +773,7 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Career Growth",
-    readTime: "6 min read",
+    readTime: "1 min read",
     tags: [
       "AI Resume",
       "Resume Trends 2026",
@@ -889,7 +889,7 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Career Growth",
-    readTime: "6 min read",
+    readTime: "4 min read",
     tags: [
       "Fresher Resume",
       "Resume Tips",
@@ -1005,7 +1005,7 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Career Growth",
-    readTime: "7 min read",
+    readTime: "2 min read",
     tags: [
       "Google Jobs",
       "ATS Resume",
@@ -1121,7 +1121,7 @@ const blogPosts: BlogPost[] = [
       day: "numeric",
     }),
     category: "Career Growth",
-    readTime: "7 min read",
+    readTime: "5 min read",
     tags: [
       "Microsoft Jobs",
       "ATS Resume",

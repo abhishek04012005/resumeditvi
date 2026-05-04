@@ -897,3 +897,44 @@
         width: 30%;
     }
 }
+
+/* Hashtags Section */
+.hashtagsSection {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(168, 85, 247, 0.05));
+    border-radius: 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.hashtagsSection h3 {
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.hashtagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.hashtag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hashtag:hover {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}

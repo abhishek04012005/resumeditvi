@@ -1,8 +1,8 @@
 import type { StaticImageData } from "next/image";
-import Resume1111Image from "../assets/resume/1111.png";
-import Resume1112Image from "../assets/resume/1112.png";
-import Resume1113Image from "../assets/resume/1113.png";
-import Resume1114Image from "../assets/resume/1114.png";
+import Resume1111Image from "../assets/resume/classicresume.png";
+import Resume1112Image from "../assets/resume/leadershipresume.png";
+import Resume1113Image from "../assets/resume/modernresume.png";
+import Resume1114Image from "../assets/resume/technicalresume.png";
 
 export type SeoData = {
   title: string;
@@ -22,7 +22,7 @@ export const resumeSeoData: Record<string, SeoData> = {
   classicResume: {
     title: "Classic Resume Template | Professional and ATS Friendly",
     description:
-      "A polished resume template built for professionals seeking a traditional, recruiter-friendly presentation with clear achievements and career highlights.",
+      "A polished resume template built for professionals seeking a professional, recruiter-friendly presentation with clear achievements and career highlights.",
     keywords: "classic resume template, professional resume, ATS friendly resume, career resume",
     ogImage: Resume1111Image.src,
     path: "/resume/classic-resume/classic-resume",
@@ -39,7 +39,7 @@ export const resumeSeoData: Record<string, SeoData> = {
     targetAudience: [
       "Doctors and medical professionals",
       "Healthcare administrators and clinical staff",
-      "Experienced professionals seeking traditional formatting",
+      "Experienced professionals seeking professional formatting",
     ],
   },
   technicalResume: {
