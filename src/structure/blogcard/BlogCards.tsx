@@ -7,13 +7,13 @@ import Container from "../container/Container";
 import Image from "next/image";
 import Background from "../background/Background";
 import { useRouter } from "next/navigation";
-import { createSlug } from "@/lib/slug";
 import styles from "./blogcard.module.css";
 
 // BlogCardProps interface defines the expected shape of the post prop
 interface BlogCardProps {
   post: {
     id: string | number;
+    slug: string;
     title: string;
     excerpt: string;
     image: string;
@@ -54,7 +54,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         <Button
           variant="primary"
           className={styles.blogReadMoreMobile}
-          onClick={() => router.push(`/blog/${createSlug(post.title)}`)}
+          onClick={() => router.push(`/blog/${post.slug}`)}
         >
           Read More
           <ArrowForward />

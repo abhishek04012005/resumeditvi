@@ -3,16 +3,11 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import blogPosts from "../../../data/blog";
 import BlogDetail from "@/structure/blogdetail/BlogDetail";
-import { createSlug } from "@/lib/slug";
+
+export const dynamic = "force-dynamic";
 
 interface BlogPageParams {
   slug: string;
-}
-
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: createSlug(post.title),
-  }));
 }
 
 export async function generateMetadata({
@@ -21,7 +16,7 @@ export async function generateMetadata({
   params: Promise<BlogPageParams>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const post = blogPosts.find((post) => createSlug(post.title) === resolvedParams.slug);
+  const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
 
   if (!post) {
     return {
@@ -68,7 +63,7 @@ export default async function BlogPostPage({
   params: Promise<BlogPageParams>;
 }) {
   const resolvedParams = await params;
-  const post = blogPosts.find((post) => createSlug(post.title) === resolvedParams.slug);
+  const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
 
   if (!post) {
     notFound();

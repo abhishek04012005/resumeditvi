@@ -23,6 +23,7 @@ interface BlogMeta {
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   content: string;
   excerpt: string;
@@ -39,6 +40,7 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
+    slug: 'crafting-your-perfect-professional-resume-tips-and-tricks',
     title: "Crafting Your Perfect Professional Resume: Tips and Tricks",
     content: `
             <h2>Why a Well-Crafted Resume Matters</h2>
@@ -183,6 +185,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
+    slug: 'the-essential-elements-of-a-compelling-professional-resume',
     title: "The Essential Elements of a Compelling Professional Resume",
     content: `
             <h2>Why a Well-Crafted Resume Matters</h2>
@@ -315,6 +318,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 3,
+    slug: 'resume-writing-for-marriage-highlighting-your-values-and-traditions',
     title: "Resume Writing for Marriage: Highlighting Your Values and Traditions",
     content: `
             <h2>Crafting a Meaningful Marriage Resume</h2>
@@ -454,6 +458,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 4,
+    slug: 'making-a-lasting-impression-professional-resume-dos-and-donts',
     title: "Making a Lasting Impression: Professional Resume Do's and Don'ts",
     content: `
             <h2>Why Your Resume Matters</h2>
@@ -580,6 +585,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 5,
+    slug: 'why-ats-resume-is-important-in-the-age-of-ai',
     title: "Why ATS Resume is Important in the Age of AI",
     content: `
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="ATS Resume AI" style="width:100%; border-radius:10px; margin-bottom:20px;" />
@@ -695,6 +701,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 6,
+    slug: 'ai-resume-trends-2026-how-to-stand-out-in-modern-hiring',
     title: "AI Resume Trends 2026: How to Stand Out in Modern Hiring",
     content: `
         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="AI Resume Trends" style="width:100%; border-radius:10px; margin-bottom:20px;" />
@@ -809,6 +816,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 7,
+    slug: 'best-resume-guide-for-freshers-how-to-get-your-first-job-in-2026',
     title: "Best Resume Guide for Freshers: How to Get Your First Job in 2026",
     content: `
         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Fresher Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />
@@ -925,6 +933,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 8,
+    slug: 'how-to-get-a-job-at-google-resume-tips-that-actually-work-in-2026',
     title: "How to Get a Job at Google: Resume Tips That Actually Work in 2026",
     content: `
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Google Job Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />
@@ -1041,6 +1050,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 9,
+    slug: 'how-to-get-a-job-at-microsoft-resume-strategies-for-2026',
     title: "How to Get a Job at Microsoft: Resume Strategies for 2026",
     content: `
         <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Microsoft Job Resume" style="width:100%; border-radius:10px; margin-bottom:20px;" />

@@ -24,6 +24,7 @@ import blogPosts from "../../data/blog";
 import type { StaticImageData } from "next/image";
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   excerpt: string;
   content: string;
@@ -46,13 +47,6 @@ interface BlogPost {
 interface BlogDetailProps {
   post: BlogPost;
 }
-
-const createSlug = (title: string): string => {
-  return title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
-};
 
 const BlogDetail: React.FC<BlogDetailProps> = ({ post: initialPost }) => {
   const router = useRouter();
@@ -182,7 +176,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ post: initialPost }) => {
                       key={relatedPost.id}
                       className={styles.blogdetailRelatedCard}
                       onClick={() =>
-                        router.push(`/blog/${createSlug(relatedPost.title)}`)
+                        router.push(`/blog/${relatedPost.slug}`)
                       }
                     >
                       <div className={styles.relatedImage}>
