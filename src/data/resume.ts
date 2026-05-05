@@ -60,8 +60,8 @@ const resumeList: ResumeType[] = [
     name: "Technical Resume",
     image: TechnicalResumeImage,
     type: "resume",
-    originalPrice: 201,
-    discountPrice: 101,
+    originalPrice: 499,
+    discountPrice: 99,
     shortDescription: "A structured technical resume template that showcases projects, certifications, education, and private-sector skills in a clean, ATS-aware design.",
     longDescription: "Technical Resume is designed to present technical experience and industry-specific credentials clearly. It supports strong section hierarchy for engineering, telecalling, and private job applications, making every detail easy to scan and remember. This technical resume template emphasizes project results, tool expertise, and certification highlights so candidates can demonstrate both depth and relevance to recruiters.",
     keyFeatures: [
@@ -109,8 +109,8 @@ const resumeList: ResumeType[] = [
     name: "Leadership Resume",
     image: LeadershipResumeImage,
     type: "resume",
-    originalPrice: 201,
-    discountPrice: 101,
+    originalPrice: 499,
+    discountPrice: 99,
     shortDescription: "A high-impact leadership resume template built for experienced professionals and managers who need to present measurable success, strategic impact, and career progression.",
     longDescription: "Leadership Resume emphasizes impact statements, leadership contributions, and career narrative. The layout prioritizes role-based achievements, core expertise, and growth milestones to build a compelling story for senior hiring teams in engineering, private operations, and service businesses. This template helps leaders articulate strategic value, team performance, and executive-level results with a polished, career-focused format.",
     keyFeatures: [
@@ -158,8 +158,8 @@ const resumeList: ResumeType[] = [
     name: "Modern Resume",
     image: ModernResumeImage,
     type: "resume",
-    originalPrice: 201,
-    discountPrice: 101,
+    originalPrice: 499,
+    discountPrice: 99,
     shortDescription: "A visually clean modern resume template for telecalling, sales, engineering, and customer-facing roles with polished presentation and strong readability.",
     longDescription: "Modern Resume is built with readability and clarity in mind. It balances profile, accomplishments, and skills so that hiring managers can quickly understand your story, strengths, and fit for roles such as telecalling, private-sector sales, or technical engineering positions. This contemporary resume template combines smart spacing, bold headings, and a modern visual hierarchy to keep your experience looking current, professional, and easy to digest.",
     keyFeatures: [
