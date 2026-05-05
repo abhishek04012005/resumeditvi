@@ -10,7 +10,7 @@
 }
 
 .adminCard {
-  max-width: 980px;
+  width: 100%;
   margin: 0 auto;
   padding: 32px;
   background: rgba(255, 255, 255, 0.96);
@@ -232,8 +232,34 @@
   color: #fff;
 }
 
-.breakText {
-  white-space: normal;
+.callButton,
+.whatsappButton {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.callButton {
+  background: #10b981;
+  color: #fff;
+}
+
+.whatsappButton {
+  background: #25d366;
+  color: #fff;
+}
+
+.callButton:hover,
+.whatsappButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
@@ -259,5 +285,16 @@
   .tableHeader {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .callButton,
+  .whatsappButton {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .adminTable th,
+  .adminTable td {
+    padding: 12px 8px;
   }
 }

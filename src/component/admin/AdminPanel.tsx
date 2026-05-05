@@ -212,6 +212,8 @@ const AdminPanel = () => {
                     <th>{tab === 'enquiry' ? 'Service' : 'Message'}</th>
                     <th>Status</th>
                     <th>Date</th>
+                    <th>Call</th>
+                    <th>WhatsApp</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -225,22 +227,45 @@ const AdminPanel = () => {
                         <td>{item.status ?? 'New'}</td>
                         <td>{new Date(item.created_at).toLocaleString()}</td>
                         <td>
+                          <a
+                            href={`tel:+91${item.mobile}`}
+                            className={styles.callButton}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Call
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            href={`https://wa.me/91${item.mobile}?text=${encodeURIComponent(
+                              `Hi ${item.name}, regarding your ${tab === 'enquiry' ? 'enquiry' : 'message'}: ${item.message}`
+                            )}`}
+                            className={styles.whatsappButton}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            WhatsApp
+                          </a>
+                        </td>
+                        <td>
                           <select
                             value={item.status ?? 'New'}
                             onChange={(e) => handleStatusChange(item.id, e.target.value)}
                             disabled={updateLoadingId === item.id}
                           >
                             <option value="New">New</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Resolved">Resolved</option>
-                            <option value="Closed">Closed</option>
+                            <option value="In Progress">Spam</option>
+                            <option value="Resolved">No Resposne</option>
+                            <option value="Closed">Progress</option>
+                            <option value="Complete">Completed</option>
                           </select>
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={6} style={{ padding: '24px', textAlign: 'center' }}>
+                      <td colSpan={8} style={{ padding: '24px', textAlign: 'center' }}>
                         {isLoading ? 'Loading...' : 'No records found.'}
                       </td>
                     </tr>
