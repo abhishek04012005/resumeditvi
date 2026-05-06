@@ -24,7 +24,7 @@ const LeadMagnet: React.FC = () => {
     <>
       {showLeadMagnet && (
         <EnquiryPopup
-          heading="Enquiry Now for Resume Templates"
+          heading="Enquiry Now for New Resume"
           paragraph="Please fill the details"
           buttonTitle="Submit"
           isOpen={showGetNow}
