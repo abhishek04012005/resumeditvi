@@ -25,7 +25,7 @@ export const resumeSeoData: Record<string, SeoData> = {
       "A polished resume template built for professionals seeking a professional, recruiter-friendly presentation with clear achievements and career highlights.",
     keywords: "classic resume template, professional resume, ATS friendly resume, career resume",
     ogImage: Resume1111Image.src,
-    path: "/resume/classic-resume/classic-resume",
+    path: "/classic-resume/classic-resume",
     category: "Resume Template",
     templatePreview: {
       mainImage: Resume1111Image,
@@ -48,7 +48,7 @@ export const resumeSeoData: Record<string, SeoData> = {
       "A technical resume design that highlights project work, certifications, and technical skills while keeping the layout easy to scan for hiring managers.",
     keywords: "technical resume template, engineering resume, project resume, technical skills resume",
     ogImage: Resume1112Image.src,
-    path: "/resume/technical-resume/technical-resume",
+    path: "/technical-resume/technical-resume",
     category: "Resume Template",
     templatePreview: {
       mainImage: Resume1112Image,
@@ -71,7 +71,7 @@ export const resumeSeoData: Record<string, SeoData> = {
       "A high-impact leadership resume template that emphasizes career progression, achievement statements, and executive-level credibility.",
     keywords: "leadership resume template, senior resume, management resume, executive resume",
     ogImage: Resume1113Image.src,
-    path: "/resume/leadership-resume/leadership-resume",
+    path: "/leadership-resume/leadership-resume",
     category: "Resume Template",
     templatePreview: {
       mainImage: Resume1113Image,
@@ -94,7 +94,7 @@ export const resumeSeoData: Record<string, SeoData> = {
       "A modern resume layout designed to keep your profile sharp, readable, and attractive for recruiters in private jobs and technical roles.",
     keywords: "modern resume template, polished resume, private sector resume, clean resume design",
     ogImage: Resume1114Image.src,
-    path: "/resume/modern-resume/modern-resume",
+    path: "/modern-resume/modern-resume",
     category: "Resume Template",
     templatePreview: {
       mainImage: Resume1114Image,

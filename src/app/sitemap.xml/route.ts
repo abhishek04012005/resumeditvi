@@ -11,12 +11,16 @@ const buildUrls = () => {
     `${baseUrl}/`,
     `${baseUrl}/resume`,
     `${baseUrl}/blog`,
-    `${baseUrl}/confirmation`,
+    `${baseUrl}/how-we-work`,
+    `${baseUrl}/why-us`,
+
+
   ];
 
-  const resumeIds = resumeList.map((resume) => `resume/${resume.slug}`);
+  const resumeIds = resumeList.map((resume) => resume.slug);
 
   resumeIds.forEach((resumeId) => {
+    urls.push(`${baseUrl}/${resumeId}`);
     resumeSeoTargets.forEach((target) => {
       const targetSlug = createSlug(target);
       urls.push(`${baseUrl}/${resumeId}/${targetSlug}`);
@@ -37,10 +41,10 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
-    .map(
-      (url) => `  <url>\n    <loc>${url}</loc>\n  </url>`
-    )
-    .join("\n")}
+      .map(
+        (url) => `  <url>\n    <loc>${url}</loc>\n  </url>`
+      )
+      .join("\n")}
 </urlset>`;
 
   return new NextResponse(xml, {
