@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "../component/navbar/Navbar";
 import Footer from "@/component/footer/Footer";
@@ -16,6 +17,31 @@ const geistMono = Geist_Mono({
 });
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://resume.ditvi.org";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Ditvi Resume",
+  url: baseUrl,
+  logo: `${baseUrl}/favicon-32x32.png`,
+  description:
+    "AI-powered ATS-friendly resume builder with professional CV and marriage biodata templates.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    areaServed: "IN",
+    availableLanguage: ["English", "Hindi"],
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Ditvi Resume",
+  url: baseUrl,
+  description:
+    "Create professional resumes, ATS-friendly CVs, and marriage biodata with AI-powered templates.",
+};
 
 export const metadata: Metadata = {
   title:
@@ -121,6 +147,12 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Script id="json-ld-organization" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(organizationSchema)}
+        </Script>
+        <Script id="json-ld-website" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(websiteSchema)}
+        </Script>
         <div className="whatsappFloating">
           <a
             href="https://wa.me/919285248504?text=Hello%20*Ditvi%20Resume*%2C%0AI%E2%80%99m%20looking%20to%20create%20a%20professional%20resume.%0ACould%20you%20please%20assist%20me%20with%20the%20best%20design%20and%20format%20for%20my%20profile%3F" aria-label="Chat with us on WhatsApp"

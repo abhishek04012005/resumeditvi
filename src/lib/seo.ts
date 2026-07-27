@@ -2760,6 +2760,8 @@ export const resumeSeoTargets = [
 const getTargetDescription = (target: string) =>
     target.replace(/^best resume for\s*/i, "").trim();
 
+const getBaseUrl = () => process.env.NEXT_PUBLIC_SITE_URL || "https://resume.ditvi.org";
+
 export function getResumeDetailMetadata({ titleTarget, name, slug, resumeId, rawTitle }: ResumeSeoArgs): Metadata {
     const target = titleTarget || name || resumeSeoTargets[0];
     const normalizedTarget = target.trim();
@@ -2774,6 +2776,8 @@ export function getResumeDetailMetadata({ titleTarget, name, slug, resumeId, raw
         : `Download the best resume for ${descriptionTarget}. This resume template is perfect for ${descriptionTarget} candidates seeking professional, fresher-friendly job-ready formatting.`;
     const canonicalSlug = slug || createSlug(normalizedTarget);
     const canonicalPath = resumeId ? `/${resumeId}/${canonicalSlug}` : `/resume1111/${canonicalSlug}`;
+    const canonicalUrl = new URL(canonicalPath, getBaseUrl()).toString();
+    const ogImageUrl = new URL("/og-image.png", getBaseUrl()).toString();
 
     return {
         title,
@@ -2782,11 +2786,11 @@ export function getResumeDetailMetadata({ titleTarget, name, slug, resumeId, raw
             title,
             description,
             type: "website",
-            url: canonicalPath,
+            url: canonicalUrl,
             siteName: "Ditvi Resume",
             images: [
                 {
-                    url: "/og-image.png",
+                    url: ogImageUrl,
                     width: 1200,
                     height: 630,
                     alt: `${normalizedTarget} resume template`,
@@ -2797,10 +2801,10 @@ export function getResumeDetailMetadata({ titleTarget, name, slug, resumeId, raw
             card: "summary_large_image",
             title,
             description,
-            images: ["/og-image.png"],
+            images: [ogImageUrl],
         },
         alternates: {
-            canonical: canonicalPath,
+            canonical: canonicalUrl,
         },
     };
 }

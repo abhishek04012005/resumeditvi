@@ -5,6 +5,7 @@ import { resumeSeoTargets } from "@/lib/seo";
 import { createSlug } from "@/lib/slug";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://resume.ditvi.org";
+const currentDate = new Date().toISOString();
 
 const buildUrls = () => {
   const urls = [
@@ -42,7 +43,7 @@ export function GET() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
       .map(
-        (url) => `  <url>\n    <loc>${url}</loc>\n  </url>`
+        (url) => `  <url>\n    <loc>${url}</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`
       )
       .join("\n")}
 </urlset>`;
